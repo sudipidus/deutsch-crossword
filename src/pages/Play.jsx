@@ -77,7 +77,7 @@ function Play() {
   }, [handleKeyDown]);
 
   const handleClueClick = useCallback((clue) => {
-    selectCell(clue.row, clue.col);
+    selectCell(clue.row, clue.col, clue.direction);
   }, [selectCell]);
 
   return (

@@ -8,9 +8,7 @@ function buildPrefilled(grid, clues) {
 
   for (const clue of clues) {
     const len = clue.word.length;
-    // Pick ~50% of letter positions to reveal
     const indices = Array.from({ length: len }, (_, i) => i);
-    // Shuffle
     for (let i = indices.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [indices[i], indices[j]] = [indices[j], indices[i]];
@@ -49,7 +47,6 @@ export function useGame(puzzle) {
   const [direction, setDirection] = useState('across');
   const [hintsUsed, setHintsUsed] = useState(0);
 
-  // Track which cells were prefilled (locked — can't be edited)
   const lockedCells = useMemo(() => {
     return initialUserGrid.map(row => row.map(cell => cell !== '' && cell !== null));
   }, [initialUserGrid]);
@@ -81,22 +78,28 @@ export function useGame(puzzle) {
     return true;
   }, [userGrid, grid, rows, cols]);
 
-  const selectCell = useCallback((row, col) => {
+  const selectCell = useCallback((row, col, forceDirection) => {
     if (grid[row][col] === null) return;
 
-    setSelectedCell(prev => {
-      if (prev && prev.row === row && prev.col === col) {
-        setDirection(d => (d === 'across' ? 'down' : 'across'));
-      }
-      return { row, col };
-    });
+    if (forceDirection) {
+      setDirection(forceDirection);
+    } else {
+      setSelectedCell(prev => {
+        if (prev && prev.row === row && prev.col === col) {
+          setDirection(d => (d === 'across' ? 'down' : 'across'));
+        }
+        return { row, col };
+      });
+      return;
+    }
+
+    setSelectedCell({ row, col });
   }, [grid]);
 
   const inputLetter = useCallback((letter) => {
     if (!selectedCell) return;
     const { row, col } = selectedCell;
     if (lockedCells[row][col]) {
-      // Skip to next unlocked cell
       const nextRow = direction === 'across' ? row : row + 1;
       const nextCol = direction === 'across' ? col + 1 : col;
       if (nextRow < rows && nextCol < cols && grid[nextRow][nextCol] !== null) {
