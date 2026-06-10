@@ -30,3 +30,31 @@ body {
   margin: 0 auto;
   padding: 0 16px;
 }
+
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 8px;
+}
+
+.nav-link {
+  padding: 6px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+}
+
+.nav-link.active {
+  color: var(--color-accent);
+  background: rgba(127, 219, 202, 0.1);
+}
