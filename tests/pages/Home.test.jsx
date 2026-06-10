@@ -4,13 +4,13 @@ import { MemoryRouter } from 'react-router-dom';
 import Home from '../../src/pages/Home';
 
 describe('Home', () => {
-  it('renders welcome message and New Puzzle button', () => {
+  it('renders welcome message and Play button', () => {
     render(
       <MemoryRouter>
         <Home />
       </MemoryRouter>
     );
     expect(screen.getByText(/Deutsch Crossword/i)).toBeInTheDocument();
-    expect(screen.getByText(/New Puzzle/i)).toBeInTheDocument();
+    expect(screen.getByText(/Play/i)).toBeInTheDocument();
   });
 });

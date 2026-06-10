@@ -1,31 +1,25 @@
 import { Link } from 'react-router-dom';
 import { useProgress } from '../hooks/useProgress';
-import prebuiltPuzzles from '../data/prebuilt.json';
 import './Home.css';
 
 function Home() {
-  const { completed } = useProgress();
-  const puzzleEntries = Object.entries(prebuiltPuzzles);
+  const { stats } = useProgress();
 
   return (
     <div className="home-page">
       <h1 className="home-title">Deutsch Crossword</h1>
       <p className="home-subtitle">Practice German vocabulary from A1 to B1</p>
-      <Link to="/play" className="new-puzzle-button">New Puzzle</Link>
-
-      {puzzleEntries.length > 0 && (
-        <ul className="puzzle-list">
-          {puzzleEntries.map(([id, puzzle]) => (
-            <li key={id} className="puzzle-list-item">
-              <Link to={`/play?puzzle=${id}`} className="puzzle-link">
-                <span className="puzzle-name">{puzzle.name || id}</span>
-                {completed.includes(id) && (
-                  <span className="puzzle-completed">Completed</span>
-                )}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <p className="home-description">
+        1,145 words across A1, A2 and B1 levels. Each puzzle is randomly generated
+        with a mix of difficulties. Half the letters are pre-filled to help you learn.
+      </p>
+      <Link to="/play" className="new-puzzle-button">Play</Link>
+      {stats.totalCompleted > 0 && (
+        <p className="home-stats">
+          {stats.totalCompleted} puzzle{stats.totalCompleted !== 1 ? 's' : ''} completed
+          {' \u00B7 '}
+          {stats.wordsLearned} words learned
+        </p>
       )}
     </div>
   );

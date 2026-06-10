@@ -11,6 +11,7 @@ const mockPuzzle = {
   clues: [
     { number: 1, direction: 'across', clue: 'apple', context: 'Der ___ ist rot.', level: 'A1', word: 'APFEL', row: 0, col: 0, article: 'der' },
     { number: 2, direction: 'across', clue: 'house', context: 'Das ___ ist groß.', level: 'A1', word: 'HAUS', row: 2, col: 0, article: 'das' },
+    { number: 1, direction: 'down', clue: 'old', context: 'Er ist ___.', level: 'A1', word: 'ALT', row: 0, col: 0, article: null },
   ],
   placedWords: [],
 };
@@ -18,7 +19,6 @@ const mockPuzzle = {
 describe('useGame', () => {
   it('initializes with partially prefilled grid', () => {
     const { result } = renderHook(() => useGame(mockPuzzle));
-    // Some cells should be prefilled, some empty
     const flatCells = result.current.userGrid.flat().filter(c => c !== null);
     const filled = flatCells.filter(c => c !== '');
     const empty = flatCells.filter(c => c === '');
@@ -46,9 +46,18 @@ describe('useGame', () => {
     expect(result.current.activeClue).not.toBe(null);
   });
 
+  it('auto-detects direction for cells in only one word', () => {
+    const { result } = renderHook(() => useGame(mockPuzzle));
+    // Cell (0,1) is only in the across word APFEL
+    act(() => { result.current.selectCell(0, 1); });
+    expect(result.current.direction).toBe('across');
+    // Cell (2,0) is only in the across word HAUS
+    act(() => { result.current.selectCell(2, 0); });
+    expect(result.current.direction).toBe('across');
+  });
+
   it('inputLetter skips locked cells', () => {
     const { result } = renderHook(() => useGame(mockPuzzle));
-    // Find a locked cell
     let lockedR = -1, lockedC = -1;
     for (let r = 0; r < result.current.lockedCells.length; r++) {
       for (let c = 0; c < result.current.lockedCells[r].length; c++) {
@@ -62,14 +71,12 @@ describe('useGame', () => {
       const original = result.current.userGrid[lockedR][lockedC];
       act(() => { result.current.selectCell(lockedR, lockedC); });
       act(() => { result.current.inputLetter('X'); });
-      // Locked cell should not change
       expect(result.current.userGrid[lockedR][lockedC]).toBe(original);
     }
   });
 
   it('inputLetter fills unlocked cells', () => {
     const { result } = renderHook(() => useGame(mockPuzzle));
-    // Find an unlocked cell
     let unlockedR = -1, unlockedC = -1;
     for (let r = 0; r < result.current.lockedCells.length; r++) {
       for (let c = 0; c < result.current.lockedCells[r].length; c++) {
@@ -89,7 +96,6 @@ describe('useGame', () => {
   it('checkAnswers marks cells correctly', () => {
     const { result } = renderHook(() => useGame(mockPuzzle));
     act(() => { result.current.checkAnswers(); });
-    // All locked cells should be correct
     for (let r = 0; r < result.current.lockedCells.length; r++) {
       for (let c = 0; c < result.current.lockedCells[r].length; c++) {
         if (result.current.lockedCells[r][c]) {
@@ -101,7 +107,6 @@ describe('useGame', () => {
 
   it('revealLetter only works on unlocked cells', () => {
     const { result } = renderHook(() => useGame(mockPuzzle));
-    // Find an unlocked cell
     let unlockedR = -1, unlockedC = -1;
     for (let r = 0; r < result.current.lockedCells.length; r++) {
       for (let c = 0; c < result.current.lockedCells[r].length; c++) {
@@ -119,8 +124,9 @@ describe('useGame', () => {
     }
   });
 
-  it('toggleDirection switches between across and down', () => {
+  it('toggleDirection switches at intersection cells', () => {
     const { result } = renderHook(() => useGame(mockPuzzle));
+    // Cell (0,0) is an intersection — both across (APFEL) and down (ALT)
     act(() => { result.current.selectCell(0, 0); });
     const firstDirection = result.current.direction;
     act(() => { result.current.selectCell(0, 0); });
