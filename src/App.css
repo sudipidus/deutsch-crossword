@@ -1,0 +1,32 @@
+:root {
+  --color-bg: #1a1a2e;
+  --color-surface: #2a2a4a;
+  --color-border: #444;
+  --color-text: #eee;
+  --color-text-secondary: #999;
+  --color-accent: #7fdbca;
+  --color-a1: #4ade80;
+  --color-a2: #facc15;
+  --color-b1: #fb923c;
+  --color-correct: #4ade80;
+  --color-wrong: #f87171;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
