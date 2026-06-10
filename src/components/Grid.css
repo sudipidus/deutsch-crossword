@@ -57,3 +57,15 @@
   font-weight: bold;
   color: var(--color-text);
 }
+
+@media (max-width: 400px) {
+  .grid {
+    max-width: 100%;
+  }
+  .cell-letter {
+    font-size: 0.85em;
+  }
+  .cell-number {
+    font-size: 0.45em;
+  }
+}
