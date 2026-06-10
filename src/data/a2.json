@@ -1,27 +1,2452 @@
 [
-  { "word": "Flughafen", "level": "A2", "clue": "airport", "context": "Der ___ ist sehr groß.", "article": "der" },
-  { "word": "Bahnhof", "level": "A2", "clue": "train station", "context": "Der ___ liegt im Zentrum.", "article": "der" },
-  { "word": "Krankenhaus", "level": "A2", "clue": "hospital", "context": "Das ___ ist in der Nähe.", "article": "das" },
-  { "word": "Ausflug", "level": "A2", "clue": "excursion", "context": "Der ___ war wunderbar.", "article": "der" },
-  { "word": "Nachricht", "level": "A2", "clue": "message", "context": "Die ___ kam heute Morgen.", "article": "die" },
-  { "word": "Erfahrung", "level": "A2", "clue": "experience", "context": "Die ___ war sehr wichtig.", "article": "die" },
-  { "word": "Gewitter", "level": "A2", "clue": "thunderstorm", "context": "Das ___ kommt bald.", "article": "das" },
-  { "word": "Geburtstag", "level": "A2", "clue": "birthday", "context": "Mein ___ ist im Juni.", "article": "der" },
-  { "word": "Frühstück", "level": "A2", "clue": "breakfast", "context": "Das ___ ist um acht Uhr.", "article": "das" },
-  { "word": "Antwort", "level": "A2", "clue": "answer", "context": "Die ___ ist richtig.", "article": "die" },
-  { "word": "Beispiel", "level": "A2", "clue": "example", "context": "Das ___ erklärt es gut.", "article": "das" },
-  { "word": "Urlaub", "level": "A2", "clue": "vacation", "context": "Der ___ beginnt morgen.", "article": "der" },
-  { "word": "Ordnung", "level": "A2", "clue": "order", "context": "Die ___ muss sein.", "article": "die" },
-  { "word": "Fehler", "level": "A2", "clue": "mistake", "context": "Der ___ war nicht schlimm.", "article": "der" },
-  { "word": "Lösung", "level": "A2", "clue": "solution", "context": "Die ___ ist einfach.", "article": "die" },
-  { "word": "Gefühl", "level": "A2", "clue": "feeling", "context": "Das ___ ist schön.", "article": "das" },
-  { "word": "Hunger", "level": "A2", "clue": "hunger", "context": "Der ___ ist groß.", "article": "der" },
-  { "word": "Küche", "level": "A2", "clue": "kitchen", "context": "Die ___ ist modern.", "article": "die" },
-  { "word": "Brücke", "level": "A2", "clue": "bridge", "context": "Die ___ ist sehr alt.", "article": "die" },
-  { "word": "Nachbar", "level": "A2", "clue": "neighbor", "context": "Der ___ ist nett.", "article": "der" },
-  { "word": "Gepäck", "level": "A2", "clue": "luggage", "context": "Das ___ ist schwer.", "article": "das" },
-  { "word": "Rechnung", "level": "A2", "clue": "bill", "context": "Die ___ kommt per Post.", "article": "die" },
-  { "word": "Wohnung", "level": "A2", "clue": "apartment", "context": "Die ___ hat drei Zimmer.", "article": "die" },
-  { "word": "Anfang", "level": "A2", "clue": "beginning", "context": "Der ___ ist schwer.", "article": "der" },
-  { "word": "Spiegel", "level": "A2", "clue": "mirror", "context": "Der ___ hängt an der Wand.", "article": "der" }
+  {
+    "word": "Flughafen",
+    "level": "A2",
+    "clue": "airport",
+    "context": "Der ___ ist sehr groß.",
+    "article": "der"
+  },
+  {
+    "word": "Bahnhof",
+    "level": "A2",
+    "clue": "train station",
+    "context": "Der ___ liegt im Zentrum.",
+    "article": "der"
+  },
+  {
+    "word": "Krankenhaus",
+    "level": "A2",
+    "clue": "hospital",
+    "context": "Das ___ ist in der Nähe.",
+    "article": "das"
+  },
+  {
+    "word": "Ausflug",
+    "level": "A2",
+    "clue": "excursion",
+    "context": "Der ___ war wunderbar.",
+    "article": "der"
+  },
+  {
+    "word": "Nachricht",
+    "level": "A2",
+    "clue": "message",
+    "context": "Die ___ kam heute Morgen.",
+    "article": "die"
+  },
+  {
+    "word": "Erfahrung",
+    "level": "A2",
+    "clue": "experience",
+    "context": "Die ___ war sehr wichtig.",
+    "article": "die"
+  },
+  {
+    "word": "Gewitter",
+    "level": "A2",
+    "clue": "thunderstorm",
+    "context": "Das ___ kommt bald.",
+    "article": "das"
+  },
+  {
+    "word": "Geburtstag",
+    "level": "A2",
+    "clue": "birthday",
+    "context": "Mein ___ ist im Juni.",
+    "article": "der"
+  },
+  {
+    "word": "Frühstück",
+    "level": "A2",
+    "clue": "breakfast",
+    "context": "Das ___ ist um acht Uhr.",
+    "article": "das"
+  },
+  {
+    "word": "Antwort",
+    "level": "A2",
+    "clue": "answer",
+    "context": "Die ___ ist richtig.",
+    "article": "die"
+  },
+  {
+    "word": "Beispiel",
+    "level": "A2",
+    "clue": "example",
+    "context": "Das ___ erklärt es gut.",
+    "article": "das"
+  },
+  {
+    "word": "Urlaub",
+    "level": "A2",
+    "clue": "vacation",
+    "context": "Der ___ beginnt morgen.",
+    "article": "der"
+  },
+  {
+    "word": "Ordnung",
+    "level": "A2",
+    "clue": "order",
+    "context": "Die ___ muss sein.",
+    "article": "die"
+  },
+  {
+    "word": "Fehler",
+    "level": "A2",
+    "clue": "mistake",
+    "context": "Der ___ war nicht schlimm.",
+    "article": "der"
+  },
+  {
+    "word": "Lösung",
+    "level": "A2",
+    "clue": "solution",
+    "context": "Die ___ ist einfach.",
+    "article": "die"
+  },
+  {
+    "word": "Gefühl",
+    "level": "A2",
+    "clue": "feeling",
+    "context": "Das ___ ist schön.",
+    "article": "das"
+  },
+  {
+    "word": "Hunger",
+    "level": "A2",
+    "clue": "hunger",
+    "context": "Der ___ ist groß.",
+    "article": "der"
+  },
+  {
+    "word": "Küche",
+    "level": "A2",
+    "clue": "kitchen",
+    "context": "Die ___ ist modern.",
+    "article": "die"
+  },
+  {
+    "word": "Brücke",
+    "level": "A2",
+    "clue": "bridge",
+    "context": "Die ___ ist sehr alt.",
+    "article": "die"
+  },
+  {
+    "word": "Nachbar",
+    "level": "A2",
+    "clue": "neighbor",
+    "context": "Der ___ ist nett.",
+    "article": "der"
+  },
+  {
+    "word": "Gepäck",
+    "level": "A2",
+    "clue": "luggage",
+    "context": "Das ___ ist schwer.",
+    "article": "das"
+  },
+  {
+    "word": "Rechnung",
+    "level": "A2",
+    "clue": "bill",
+    "context": "Die ___ kommt per Post.",
+    "article": "die"
+  },
+  {
+    "word": "Wohnung",
+    "level": "A2",
+    "clue": "apartment",
+    "context": "Die ___ hat drei Zimmer.",
+    "article": "die"
+  },
+  {
+    "word": "Anfang",
+    "level": "A2",
+    "clue": "beginning",
+    "context": "Der ___ ist schwer.",
+    "article": "der"
+  },
+  {
+    "word": "Spiegel",
+    "level": "A2",
+    "clue": "mirror",
+    "context": "Der ___ hängt an der Wand.",
+    "article": "der"
+  },
+  {
+    "word": "Abfahrt",
+    "level": "A2",
+    "clue": "departure",
+    "context": "Die ___ ist um zehn Uhr.",
+    "article": "die"
+  },
+  {
+    "word": "Ankunft",
+    "level": "A2",
+    "clue": "arrival",
+    "context": "Die ___ war pünktlich.",
+    "article": "die"
+  },
+  {
+    "word": "Ausgang",
+    "level": "A2",
+    "clue": "exit",
+    "context": "Der ___ ist dort drüben.",
+    "article": "der"
+  },
+  {
+    "word": "Eingang",
+    "level": "A2",
+    "clue": "entrance",
+    "context": "Der ___ ist vorne.",
+    "article": "der"
+  },
+  {
+    "word": "Aufzug",
+    "level": "A2",
+    "clue": "elevator",
+    "context": "Der ___ fährt nach oben.",
+    "article": "der"
+  },
+  {
+    "word": "Aussicht",
+    "level": "A2",
+    "clue": "view",
+    "context": "Die ___ vom Berg ist toll.",
+    "article": "die"
+  },
+  {
+    "word": "Bereich",
+    "level": "A2",
+    "clue": "area",
+    "context": "Der ___ ist gesperrt.",
+    "article": "der"
+  },
+  {
+    "word": "Besuch",
+    "level": "A2",
+    "clue": "visit",
+    "context": "Der ___ war sehr schön.",
+    "article": "der"
+  },
+  {
+    "word": "Betrag",
+    "level": "A2",
+    "clue": "amount",
+    "context": "Der ___ ist zu hoch.",
+    "article": "der"
+  },
+  {
+    "word": "Bildung",
+    "level": "A2",
+    "clue": "education",
+    "context": "Die ___ ist sehr wichtig.",
+    "article": "die"
+  },
+  {
+    "word": "Büro",
+    "level": "A2",
+    "clue": "office",
+    "context": "Das ___ ist im zweiten Stock.",
+    "article": "das"
+  },
+  {
+    "word": "Daumen",
+    "level": "A2",
+    "clue": "thumb",
+    "context": "Ich drücke dir den ___.",
+    "article": "der"
+  },
+  {
+    "word": "Decke",
+    "level": "A2",
+    "clue": "blanket",
+    "context": "Die ___ ist sehr warm.",
+    "article": "die"
+  },
+  {
+    "word": "Drucker",
+    "level": "A2",
+    "clue": "printer",
+    "context": "Der ___ funktioniert nicht.",
+    "article": "der"
+  },
+  {
+    "word": "Durst",
+    "level": "A2",
+    "clue": "thirst",
+    "context": "Der ___ ist groß nach dem Sport.",
+    "article": "der"
+  },
+  {
+    "word": "Ecke",
+    "level": "A2",
+    "clue": "corner",
+    "context": "Das Café ist um die ___.",
+    "article": "die"
+  },
+  {
+    "word": "Einladung",
+    "level": "A2",
+    "clue": "invitation",
+    "context": "Die ___ kam gestern an.",
+    "article": "die"
+  },
+  {
+    "word": "Empfang",
+    "level": "A2",
+    "clue": "reception",
+    "context": "Der ___ ist im Erdgeschoss.",
+    "article": "der"
+  },
+  {
+    "word": "Erdgeschoss",
+    "level": "A2",
+    "clue": "ground floor",
+    "context": "Das ___ hat einen Laden.",
+    "article": "das"
+  },
+  {
+    "word": "Erfolg",
+    "level": "A2",
+    "clue": "success",
+    "context": "Der ___ war verdient.",
+    "article": "der"
+  },
+  {
+    "word": "Erinnerung",
+    "level": "A2",
+    "clue": "memory",
+    "context": "Die ___ ist wunderschön.",
+    "article": "die"
+  },
+  {
+    "word": "Erlaubnis",
+    "level": "A2",
+    "clue": "permission",
+    "context": "Die ___ habe ich bekommen.",
+    "article": "die"
+  },
+  {
+    "word": "Fabrik",
+    "level": "A2",
+    "clue": "factory",
+    "context": "Die ___ ist sehr groß.",
+    "article": "die"
+  },
+  {
+    "word": "Fahrkarte",
+    "level": "A2",
+    "clue": "ticket",
+    "context": "Die ___ kostet zehn Euro.",
+    "article": "die"
+  },
+  {
+    "word": "Fahrplan",
+    "level": "A2",
+    "clue": "timetable",
+    "context": "Der ___ hängt am Bahnhof.",
+    "article": "der"
+  },
+  {
+    "word": "Fahrrad",
+    "level": "A2",
+    "clue": "bicycle",
+    "context": "Das ___ steht vor dem Haus.",
+    "article": "das"
+  },
+  {
+    "word": "Feier",
+    "level": "A2",
+    "clue": "celebration",
+    "context": "Die ___ war sehr lustig.",
+    "article": "die"
+  },
+  {
+    "word": "Fieber",
+    "level": "A2",
+    "clue": "fever",
+    "context": "Das ___ ist hoch.",
+    "article": "das"
+  },
+  {
+    "word": "Fläche",
+    "level": "A2",
+    "clue": "surface",
+    "context": "Die ___ ist sehr glatt.",
+    "article": "die"
+  },
+  {
+    "word": "Flug",
+    "level": "A2",
+    "clue": "flight",
+    "context": "Der ___ dauert zwei Stunden.",
+    "article": "der"
+  },
+  {
+    "word": "Formular",
+    "level": "A2",
+    "clue": "form",
+    "context": "Das ___ muss man ausfüllen.",
+    "article": "das"
+  },
+  {
+    "word": "Fortschritt",
+    "level": "A2",
+    "clue": "progress",
+    "context": "Der ___ ist deutlich.",
+    "article": "der"
+  },
+  {
+    "word": "Führung",
+    "level": "A2",
+    "clue": "guided tour",
+    "context": "Die ___ beginnt um drei.",
+    "article": "die"
+  },
+  {
+    "word": "Garderobe",
+    "level": "A2",
+    "clue": "wardrobe",
+    "context": "Die ___ ist im Flur.",
+    "article": "die"
+  },
+  {
+    "word": "Gegend",
+    "level": "A2",
+    "clue": "area",
+    "context": "Die ___ ist sehr ruhig.",
+    "article": "die"
+  },
+  {
+    "word": "Gelegenheit",
+    "level": "A2",
+    "clue": "opportunity",
+    "context": "Die ___ kommt nicht wieder.",
+    "article": "die"
+  },
+  {
+    "word": "Geschäft",
+    "level": "A2",
+    "clue": "shop",
+    "context": "Das ___ öffnet um neun.",
+    "article": "das"
+  },
+  {
+    "word": "Geschenk",
+    "level": "A2",
+    "clue": "gift",
+    "context": "Das ___ ist für dich.",
+    "article": "das"
+  },
+  {
+    "word": "Geschichte",
+    "level": "A2",
+    "clue": "story",
+    "context": "Die ___ ist spannend.",
+    "article": "die"
+  },
+  {
+    "word": "Gesundheit",
+    "level": "A2",
+    "clue": "health",
+    "context": "Die ___ ist das Wichtigste.",
+    "article": "die"
+  },
+  {
+    "word": "Glück",
+    "level": "A2",
+    "clue": "luck",
+    "context": "Das ___ war auf meiner Seite.",
+    "article": "das"
+  },
+  {
+    "word": "Grenze",
+    "level": "A2",
+    "clue": "border",
+    "context": "Die ___ ist nicht weit.",
+    "article": "die"
+  },
+  {
+    "word": "Grund",
+    "level": "A2",
+    "clue": "reason",
+    "context": "Der ___ ist klar.",
+    "article": "der"
+  },
+  {
+    "word": "Hafen",
+    "level": "A2",
+    "clue": "harbor",
+    "context": "Der ___ ist voller Schiffe.",
+    "article": "der"
+  },
+  {
+    "word": "Haltestelle",
+    "level": "A2",
+    "clue": "bus stop",
+    "context": "Die ___ ist dort vorne.",
+    "article": "die"
+  },
+  {
+    "word": "Handtuch",
+    "level": "A2",
+    "clue": "towel",
+    "context": "Das ___ ist im Bad.",
+    "article": "das"
+  },
+  {
+    "word": "Heimat",
+    "level": "A2",
+    "clue": "homeland",
+    "context": "Die ___ fehlt mir sehr.",
+    "article": "die"
+  },
+  {
+    "word": "Heizung",
+    "level": "A2",
+    "clue": "heating",
+    "context": "Die ___ ist kaputt.",
+    "article": "die"
+  },
+  {
+    "word": "Hinweis",
+    "level": "A2",
+    "clue": "hint",
+    "context": "Der ___ war sehr hilfreich.",
+    "article": "der"
+  },
+  {
+    "word": "Hobby",
+    "level": "A2",
+    "clue": "hobby",
+    "context": "Mein ___ ist Lesen.",
+    "article": "das"
+  },
+  {
+    "word": "Husten",
+    "level": "A2",
+    "clue": "cough",
+    "context": "Der ___ geht nicht weg.",
+    "article": "der"
+  },
+  {
+    "word": "Idee",
+    "level": "A2",
+    "clue": "idea",
+    "context": "Die ___ ist super.",
+    "article": "die"
+  },
+  {
+    "word": "Insel",
+    "level": "A2",
+    "clue": "island",
+    "context": "Die ___ liegt im Meer.",
+    "article": "die"
+  },
+  {
+    "word": "Jahreszeit",
+    "level": "A2",
+    "clue": "season",
+    "context": "Die ___ wechselt bald.",
+    "article": "die"
+  },
+  {
+    "word": "Jugend",
+    "level": "A2",
+    "clue": "youth",
+    "context": "Die ___ war schön.",
+    "article": "die"
+  },
+  {
+    "word": "Kasse",
+    "level": "A2",
+    "clue": "cash register",
+    "context": "Die ___ ist dort hinten.",
+    "article": "die"
+  },
+  {
+    "word": "Keller",
+    "level": "A2",
+    "clue": "basement",
+    "context": "Der ___ ist dunkel.",
+    "article": "der"
+  },
+  {
+    "word": "Kenntnis",
+    "level": "A2",
+    "clue": "knowledge",
+    "context": "Die ___ ist sehr nützlich.",
+    "article": "die"
+  },
+  {
+    "word": "Kissen",
+    "level": "A2",
+    "clue": "pillow",
+    "context": "Das ___ ist sehr weich.",
+    "article": "das"
+  },
+  {
+    "word": "Kleidung",
+    "level": "A2",
+    "clue": "clothing",
+    "context": "Die ___ ist neu.",
+    "article": "die"
+  },
+  {
+    "word": "Konto",
+    "level": "A2",
+    "clue": "account",
+    "context": "Das ___ ist fast leer.",
+    "article": "das"
+  },
+  {
+    "word": "Kopfweh",
+    "level": "A2",
+    "clue": "headache",
+    "context": "Das ___ wird schlimmer.",
+    "article": "das"
+  },
+  {
+    "word": "Kreuzung",
+    "level": "A2",
+    "clue": "intersection",
+    "context": "Die ___ ist gefährlich.",
+    "article": "die"
+  },
+  {
+    "word": "Kündigung",
+    "level": "A2",
+    "clue": "termination",
+    "context": "Die ___ kam überraschend.",
+    "article": "die"
+  },
+  {
+    "word": "Lärm",
+    "level": "A2",
+    "clue": "noise",
+    "context": "Der ___ stört die Nachbarn.",
+    "article": "der"
+  },
+  {
+    "word": "Laden",
+    "level": "A2",
+    "clue": "store",
+    "context": "Der ___ hat heute zu.",
+    "article": "der"
+  },
+  {
+    "word": "Landschaft",
+    "level": "A2",
+    "clue": "landscape",
+    "context": "Die ___ ist wunderschön.",
+    "article": "die"
+  },
+  {
+    "word": "Lebenslauf",
+    "level": "A2",
+    "clue": "resume",
+    "context": "Der ___ muss aktuell sein.",
+    "article": "der"
+  },
+  {
+    "word": "Licht",
+    "level": "A2",
+    "clue": "light",
+    "context": "Das ___ ist an.",
+    "article": "das"
+  },
+  {
+    "word": "Lust",
+    "level": "A2",
+    "clue": "desire",
+    "context": "Ich habe ___ auf Eis.",
+    "article": "die"
+  },
+  {
+    "word": "Magen",
+    "level": "A2",
+    "clue": "stomach",
+    "context": "Der ___ tut mir weh.",
+    "article": "der"
+  },
+  {
+    "word": "Mannschaft",
+    "level": "A2",
+    "clue": "team",
+    "context": "Die ___ hat gewonnen.",
+    "article": "die"
+  },
+  {
+    "word": "Markt",
+    "level": "A2",
+    "clue": "market",
+    "context": "Der ___ ist am Samstag.",
+    "article": "der"
+  },
+  {
+    "word": "Meinung",
+    "level": "A2",
+    "clue": "opinion",
+    "context": "Die ___ ist wichtig.",
+    "article": "die"
+  },
+  {
+    "word": "Messe",
+    "level": "A2",
+    "clue": "trade fair",
+    "context": "Die ___ findet im März statt.",
+    "article": "die"
+  },
+  {
+    "word": "Miete",
+    "level": "A2",
+    "clue": "rent",
+    "context": "Die ___ ist zu hoch.",
+    "article": "die"
+  },
+  {
+    "word": "Möglichkeit",
+    "level": "A2",
+    "clue": "possibility",
+    "context": "Die ___ gibt es noch.",
+    "article": "die"
+  },
+  {
+    "word": "Museum",
+    "level": "A2",
+    "clue": "museum",
+    "context": "Das ___ ist sehr bekannt.",
+    "article": "das"
+  },
+  {
+    "word": "Natur",
+    "level": "A2",
+    "clue": "nature",
+    "context": "Die ___ ist hier wunderbar.",
+    "article": "die"
+  },
+  {
+    "word": "Nebel",
+    "level": "A2",
+    "clue": "fog",
+    "context": "Der ___ ist sehr dicht.",
+    "article": "der"
+  },
+  {
+    "word": "Notfall",
+    "level": "A2",
+    "clue": "emergency",
+    "context": "Im ___ rufe die Polizei.",
+    "article": "der"
+  },
+  {
+    "word": "Nummer",
+    "level": "A2",
+    "clue": "number",
+    "context": "Die ___ steht auf dem Brief.",
+    "article": "die"
+  },
+  {
+    "word": "Ofen",
+    "level": "A2",
+    "clue": "oven",
+    "context": "Der ___ ist sehr heiß.",
+    "article": "der"
+  },
+  {
+    "word": "Paket",
+    "level": "A2",
+    "clue": "package",
+    "context": "Das ___ kam heute an.",
+    "article": "das"
+  },
+  {
+    "word": "Parkplatz",
+    "level": "A2",
+    "clue": "parking lot",
+    "context": "Der ___ ist voll.",
+    "article": "der"
+  },
+  {
+    "word": "Pause",
+    "level": "A2",
+    "clue": "break",
+    "context": "Die ___ dauert 15 Minuten.",
+    "article": "die"
+  },
+  {
+    "word": "Pflicht",
+    "level": "A2",
+    "clue": "duty",
+    "context": "Die ___ ruft.",
+    "article": "die"
+  },
+  {
+    "word": "Polizei",
+    "level": "A2",
+    "clue": "police",
+    "context": "Die ___ kommt sofort.",
+    "article": "die"
+  },
+  {
+    "word": "Prüfung",
+    "level": "A2",
+    "clue": "exam",
+    "context": "Die ___ ist morgen.",
+    "article": "die"
+  },
+  {
+    "word": "Projekt",
+    "level": "A2",
+    "clue": "project",
+    "context": "Das ___ dauert drei Monate.",
+    "article": "das"
+  },
+  {
+    "word": "Qualität",
+    "level": "A2",
+    "clue": "quality",
+    "context": "Die ___ ist sehr gut.",
+    "article": "die"
+  },
+  {
+    "word": "Quittung",
+    "level": "A2",
+    "clue": "receipt",
+    "context": "Die ___ brauche ich noch.",
+    "article": "die"
+  },
+  {
+    "word": "Rathaus",
+    "level": "A2",
+    "clue": "town hall",
+    "context": "Das ___ ist am Marktplatz.",
+    "article": "das"
+  },
+  {
+    "word": "Raum",
+    "level": "A2",
+    "clue": "room",
+    "context": "Der ___ ist sehr hell.",
+    "article": "der"
+  },
+  {
+    "word": "Reise",
+    "level": "A2",
+    "clue": "journey",
+    "context": "Die ___ war lang.",
+    "article": "die"
+  },
+  {
+    "word": "Reparatur",
+    "level": "A2",
+    "clue": "repair",
+    "context": "Die ___ dauert eine Woche.",
+    "article": "die"
+  },
+  {
+    "word": "Rezept",
+    "level": "A2",
+    "clue": "recipe",
+    "context": "Das ___ ist einfach.",
+    "article": "das"
+  },
+  {
+    "word": "Richtung",
+    "level": "A2",
+    "clue": "direction",
+    "context": "Die ___ stimmt nicht.",
+    "article": "die"
+  },
+  {
+    "word": "Rücken",
+    "level": "A2",
+    "clue": "back",
+    "context": "Der ___ tut mir weh.",
+    "article": "der"
+  },
+  {
+    "word": "Ruhe",
+    "level": "A2",
+    "clue": "quiet",
+    "context": "Die ___ tut mir gut.",
+    "article": "die"
+  },
+  {
+    "word": "Salat",
+    "level": "A2",
+    "clue": "salad",
+    "context": "Der ___ ist frisch.",
+    "article": "der"
+  },
+  {
+    "word": "Schatten",
+    "level": "A2",
+    "clue": "shadow",
+    "context": "Der ___ ist kühl.",
+    "article": "der"
+  },
+  {
+    "word": "Schlüssel",
+    "level": "A2",
+    "clue": "key",
+    "context": "Der ___ liegt auf dem Tisch.",
+    "article": "der"
+  },
+  {
+    "word": "Schmerz",
+    "level": "A2",
+    "clue": "pain",
+    "context": "Der ___ ist stark.",
+    "article": "der"
+  },
+  {
+    "word": "Schnupfen",
+    "level": "A2",
+    "clue": "cold",
+    "context": "Der ___ ist lästig.",
+    "article": "der"
+  },
+  {
+    "word": "Schrank",
+    "level": "A2",
+    "clue": "cupboard",
+    "context": "Der ___ ist voll.",
+    "article": "der"
+  },
+  {
+    "word": "Schuld",
+    "level": "A2",
+    "clue": "fault",
+    "context": "Die ___ liegt bei mir.",
+    "article": "die"
+  },
+  {
+    "word": "Schutz",
+    "level": "A2",
+    "clue": "protection",
+    "context": "Der ___ ist wichtig.",
+    "article": "der"
+  },
+  {
+    "word": "Seife",
+    "level": "A2",
+    "clue": "soap",
+    "context": "Die ___ riecht gut.",
+    "article": "die"
+  },
+  {
+    "word": "Sendung",
+    "level": "A2",
+    "clue": "broadcast",
+    "context": "Die ___ kommt um acht.",
+    "article": "die"
+  },
+  {
+    "word": "Sorge",
+    "level": "A2",
+    "clue": "worry",
+    "context": "Die ___ ist unbegründet.",
+    "article": "die"
+  },
+  {
+    "word": "Speisekarte",
+    "level": "A2",
+    "clue": "menu",
+    "context": "Die ___ sieht gut aus.",
+    "article": "die"
+  },
+  {
+    "word": "Sprache",
+    "level": "A2",
+    "clue": "language",
+    "context": "Die ___ ist schwer.",
+    "article": "die"
+  },
+  {
+    "word": "Stau",
+    "level": "A2",
+    "clue": "traffic jam",
+    "context": "Der ___ ist lang.",
+    "article": "der"
+  },
+  {
+    "word": "Steuer",
+    "level": "A2",
+    "clue": "tax",
+    "context": "Die ___ muss man zahlen.",
+    "article": "die"
+  },
+  {
+    "word": "Stimme",
+    "level": "A2",
+    "clue": "voice",
+    "context": "Die ___ klingt freundlich.",
+    "article": "die"
+  },
+  {
+    "word": "Stoff",
+    "level": "A2",
+    "clue": "fabric",
+    "context": "Der ___ ist sehr weich.",
+    "article": "der"
+  },
+  {
+    "word": "Strand",
+    "level": "A2",
+    "clue": "beach",
+    "context": "Der ___ ist wunderschön.",
+    "article": "der"
+  },
+  {
+    "word": "Streit",
+    "level": "A2",
+    "clue": "argument",
+    "context": "Der ___ war unnötig.",
+    "article": "der"
+  },
+  {
+    "word": "Stück",
+    "level": "A2",
+    "clue": "piece",
+    "context": "Ein ___ Kuchen, bitte.",
+    "article": "das"
+  },
+  {
+    "word": "Suppe",
+    "level": "A2",
+    "clue": "soup",
+    "context": "Die ___ schmeckt lecker.",
+    "article": "die"
+  },
+  {
+    "word": "Tasche",
+    "level": "A2",
+    "clue": "bag",
+    "context": "Die ___ ist neu.",
+    "article": "die"
+  },
+  {
+    "word": "Termin",
+    "level": "A2",
+    "clue": "appointment",
+    "context": "Der ___ ist um drei Uhr.",
+    "article": "der"
+  },
+  {
+    "word": "Topf",
+    "level": "A2",
+    "clue": "pot",
+    "context": "Der ___ steht auf dem Herd.",
+    "article": "der"
+  },
+  {
+    "word": "Treppe",
+    "level": "A2",
+    "clue": "stairs",
+    "context": "Die ___ ist sehr steil.",
+    "article": "die"
+  },
+  {
+    "word": "Überraschung",
+    "level": "A2",
+    "clue": "surprise",
+    "context": "Die ___ ist gelungen.",
+    "article": "die"
+  },
+  {
+    "word": "Umgebung",
+    "level": "A2",
+    "clue": "surroundings",
+    "context": "Die ___ ist sehr grün.",
+    "article": "die"
+  },
+  {
+    "word": "Umzug",
+    "level": "A2",
+    "clue": "move",
+    "context": "Der ___ ist nächste Woche.",
+    "article": "der"
+  },
+  {
+    "word": "Unterricht",
+    "level": "A2",
+    "clue": "lesson",
+    "context": "Der ___ beginnt um acht.",
+    "article": "der"
+  },
+  {
+    "word": "Unterschied",
+    "level": "A2",
+    "clue": "difference",
+    "context": "Der ___ ist klein.",
+    "article": "der"
+  },
+  {
+    "word": "Verein",
+    "level": "A2",
+    "clue": "club",
+    "context": "Der ___ hat viele Mitglieder.",
+    "article": "der"
+  },
+  {
+    "word": "Verkehr",
+    "level": "A2",
+    "clue": "traffic",
+    "context": "Der ___ ist heute schlimm.",
+    "article": "der"
+  },
+  {
+    "word": "Vertrag",
+    "level": "A2",
+    "clue": "contract",
+    "context": "Der ___ gilt ein Jahr.",
+    "article": "der"
+  },
+  {
+    "word": "Verspätung",
+    "level": "A2",
+    "clue": "delay",
+    "context": "Die ___ beträgt zehn Minuten.",
+    "article": "die"
+  },
+  {
+    "word": "Vorschlag",
+    "level": "A2",
+    "clue": "suggestion",
+    "context": "Der ___ klingt gut.",
+    "article": "der"
+  },
+  {
+    "word": "Vorteil",
+    "level": "A2",
+    "clue": "advantage",
+    "context": "Der ___ ist klar.",
+    "article": "der"
+  },
+  {
+    "word": "Wahrheit",
+    "level": "A2",
+    "clue": "truth",
+    "context": "Die ___ ist wichtig.",
+    "article": "die"
+  },
+  {
+    "word": "Wanderung",
+    "level": "A2",
+    "clue": "hike",
+    "context": "Die ___ dauert drei Stunden.",
+    "article": "die"
+  },
+  {
+    "word": "Werkstatt",
+    "level": "A2",
+    "clue": "workshop",
+    "context": "Die ___ repariert Autos.",
+    "article": "die"
+  },
+  {
+    "word": "Werbung",
+    "level": "A2",
+    "clue": "advertisement",
+    "context": "Die ___ ist überall.",
+    "article": "die"
+  },
+  {
+    "word": "Wetter",
+    "level": "A2",
+    "clue": "weather",
+    "context": "Das ___ ist heute schön.",
+    "article": "das"
+  },
+  {
+    "word": "Wunsch",
+    "level": "A2",
+    "clue": "wish",
+    "context": "Der ___ geht in Erfüllung.",
+    "article": "der"
+  },
+  {
+    "word": "Zahnarzt",
+    "level": "A2",
+    "clue": "dentist",
+    "context": "Der ___ hat heute frei.",
+    "article": "der"
+  },
+  {
+    "word": "Zeugnis",
+    "level": "A2",
+    "clue": "certificate",
+    "context": "Das ___ war sehr gut.",
+    "article": "das"
+  },
+  {
+    "word": "Zukunft",
+    "level": "A2",
+    "clue": "future",
+    "context": "Die ___ sieht gut aus.",
+    "article": "die"
+  },
+  {
+    "word": "Ziel",
+    "level": "A2",
+    "clue": "goal",
+    "context": "Das ___ ist klar.",
+    "article": "das"
+  },
+  {
+    "word": "Abendessen",
+    "level": "A2",
+    "clue": "dinner",
+    "context": "Das ___ ist um sieben.",
+    "article": "das"
+  },
+  {
+    "word": "Abteilung",
+    "level": "A2",
+    "clue": "department",
+    "context": "Die ___ ist im dritten Stock.",
+    "article": "die"
+  },
+  {
+    "word": "Apotheke",
+    "level": "A2",
+    "clue": "pharmacy",
+    "context": "Die ___ ist um die Ecke.",
+    "article": "die"
+  },
+  {
+    "word": "Arbeitsplatz",
+    "level": "A2",
+    "clue": "workplace",
+    "context": "Der ___ ist in der Stadt.",
+    "article": "der"
+  },
+  {
+    "word": "Aufgabe",
+    "level": "A2",
+    "clue": "task",
+    "context": "Die ___ ist nicht leicht.",
+    "article": "die"
+  },
+  {
+    "word": "Ausland",
+    "level": "A2",
+    "clue": "abroad",
+    "context": "Das ___ ist interessant.",
+    "article": "das"
+  },
+  {
+    "word": "Ausweis",
+    "level": "A2",
+    "clue": "ID card",
+    "context": "Der ___ ist abgelaufen.",
+    "article": "der"
+  },
+  {
+    "word": "Bäckerei",
+    "level": "A2",
+    "clue": "bakery",
+    "context": "Die ___ öffnet um sechs.",
+    "article": "die"
+  },
+  {
+    "word": "Balkon",
+    "level": "A2",
+    "clue": "balcony",
+    "context": "Der ___ ist sehr klein.",
+    "article": "der"
+  },
+  {
+    "word": "Batterie",
+    "level": "A2",
+    "clue": "battery",
+    "context": "Die ___ ist leer.",
+    "article": "die"
+  },
+  {
+    "word": "Bedienung",
+    "level": "A2",
+    "clue": "service",
+    "context": "Die ___ ist freundlich.",
+    "article": "die"
+  },
+  {
+    "word": "Bestellung",
+    "level": "A2",
+    "clue": "order",
+    "context": "Die ___ kommt gleich.",
+    "article": "die"
+  },
+  {
+    "word": "Bewerbung",
+    "level": "A2",
+    "clue": "application",
+    "context": "Die ___ habe ich abgeschickt.",
+    "article": "die"
+  },
+  {
+    "word": "Bibliothek",
+    "level": "A2",
+    "clue": "library",
+    "context": "Die ___ hat viele Bücher.",
+    "article": "die"
+  },
+  {
+    "word": "Bildschirm",
+    "level": "A2",
+    "clue": "screen",
+    "context": "Der ___ ist zu klein.",
+    "article": "der"
+  },
+  {
+    "word": "Blatt",
+    "level": "A2",
+    "clue": "leaf",
+    "context": "Das ___ fällt vom Baum.",
+    "article": "das"
+  },
+  {
+    "word": "Briefkasten",
+    "level": "A2",
+    "clue": "mailbox",
+    "context": "Der ___ ist voll.",
+    "article": "der"
+  },
+  {
+    "word": "Chance",
+    "level": "A2",
+    "clue": "chance",
+    "context": "Die ___ ist groß.",
+    "article": "die"
+  },
+  {
+    "word": "Dach",
+    "level": "A2",
+    "clue": "roof",
+    "context": "Das ___ ist rot.",
+    "article": "das"
+  },
+  {
+    "word": "Diät",
+    "level": "A2",
+    "clue": "diet",
+    "context": "Die ___ ist streng.",
+    "article": "die"
+  },
+  {
+    "word": "Disko",
+    "level": "A2",
+    "clue": "disco",
+    "context": "Die ___ war toll.",
+    "article": "die"
+  },
+  {
+    "word": "Dokument",
+    "level": "A2",
+    "clue": "document",
+    "context": "Das ___ ist sehr wichtig.",
+    "article": "das"
+  },
+  {
+    "word": "Dose",
+    "level": "A2",
+    "clue": "can",
+    "context": "Die ___ ist aus Metall.",
+    "article": "die"
+  },
+  {
+    "word": "Dusche",
+    "level": "A2",
+    "clue": "shower",
+    "context": "Die ___ ist im Bad.",
+    "article": "die"
+  },
+  {
+    "word": "Einkauf",
+    "level": "A2",
+    "clue": "purchase",
+    "context": "Der ___ war teuer.",
+    "article": "der"
+  },
+  {
+    "word": "Enkel",
+    "level": "A2",
+    "clue": "grandchild",
+    "context": "Der ___ besucht die Oma.",
+    "article": "der"
+  },
+  {
+    "word": "Entfernung",
+    "level": "A2",
+    "clue": "distance",
+    "context": "Die ___ beträgt fünf Kilometer.",
+    "article": "die"
+  },
+  {
+    "word": "Ergebnis",
+    "level": "A2",
+    "clue": "result",
+    "context": "Das ___ ist positiv.",
+    "article": "das"
+  },
+  {
+    "word": "Erkältung",
+    "level": "A2",
+    "clue": "cold",
+    "context": "Die ___ dauert eine Woche.",
+    "article": "die"
+  },
+  {
+    "word": "Ermäßigung",
+    "level": "A2",
+    "clue": "discount",
+    "context": "Die ___ gilt für Studenten.",
+    "article": "die"
+  },
+  {
+    "word": "Fach",
+    "level": "A2",
+    "clue": "subject",
+    "context": "Das ___ ist interessant.",
+    "article": "das"
+  },
+  {
+    "word": "Feierabend",
+    "level": "A2",
+    "clue": "end of work",
+    "context": "Der ___ ist um fünf.",
+    "article": "der"
+  },
+  {
+    "word": "Feuerwehr",
+    "level": "A2",
+    "clue": "fire brigade",
+    "context": "Die ___ kommt schnell.",
+    "article": "die"
+  },
+  {
+    "word": "Firma",
+    "level": "A2",
+    "clue": "company",
+    "context": "Die ___ hat viele Angestellte.",
+    "article": "die"
+  },
+  {
+    "word": "Flur",
+    "level": "A2",
+    "clue": "hallway",
+    "context": "Der ___ ist lang und schmal.",
+    "article": "der"
+  },
+  {
+    "word": "Föhn",
+    "level": "A2",
+    "clue": "hair dryer",
+    "context": "Der ___ ist im Schrank.",
+    "article": "der"
+  },
+  {
+    "word": "Freibad",
+    "level": "A2",
+    "clue": "outdoor pool",
+    "context": "Das ___ hat heute auf.",
+    "article": "das"
+  },
+  {
+    "word": "Freizeit",
+    "level": "A2",
+    "clue": "free time",
+    "context": "In der ___ lese ich.",
+    "article": "die"
+  },
+  {
+    "word": "Freundschaft",
+    "level": "A2",
+    "clue": "friendship",
+    "context": "Die ___ ist mir wichtig.",
+    "article": "die"
+  },
+  {
+    "word": "Friseur",
+    "level": "A2",
+    "clue": "hairdresser",
+    "context": "Der ___ schneidet gut.",
+    "article": "der"
+  },
+  {
+    "word": "Gebäude",
+    "level": "A2",
+    "clue": "building",
+    "context": "Das ___ ist sehr alt.",
+    "article": "das"
+  },
+  {
+    "word": "Gehalt",
+    "level": "A2",
+    "clue": "salary",
+    "context": "Das ___ kommt am Monatsende.",
+    "article": "das"
+  },
+  {
+    "word": "Genehmigung",
+    "level": "A2",
+    "clue": "approval",
+    "context": "Die ___ fehlt noch.",
+    "article": "die"
+  },
+  {
+    "word": "Gerät",
+    "level": "A2",
+    "clue": "device",
+    "context": "Das ___ ist neu.",
+    "article": "das"
+  },
+  {
+    "word": "Gericht",
+    "level": "A2",
+    "clue": "dish",
+    "context": "Das ___ schmeckt hervorragend.",
+    "article": "das"
+  },
+  {
+    "word": "Geschmack",
+    "level": "A2",
+    "clue": "taste",
+    "context": "Der ___ ist wunderbar.",
+    "article": "der"
+  },
+  {
+    "word": "Gewicht",
+    "level": "A2",
+    "clue": "weight",
+    "context": "Das ___ stimmt nicht.",
+    "article": "das"
+  },
+  {
+    "word": "Gewinn",
+    "level": "A2",
+    "clue": "profit",
+    "context": "Der ___ war hoch.",
+    "article": "der"
+  },
+  {
+    "word": "Gewohnheit",
+    "level": "A2",
+    "clue": "habit",
+    "context": "Die ___ ist schlecht.",
+    "article": "die"
+  },
+  {
+    "word": "Gras",
+    "level": "A2",
+    "clue": "grass",
+    "context": "Das ___ ist grün.",
+    "article": "das"
+  },
+  {
+    "word": "Griff",
+    "level": "A2",
+    "clue": "handle",
+    "context": "Der ___ ist locker.",
+    "article": "der"
+  },
+  {
+    "word": "Grundstück",
+    "level": "A2",
+    "clue": "property",
+    "context": "Das ___ ist groß.",
+    "article": "das"
+  },
+  {
+    "word": "Gutschein",
+    "level": "A2",
+    "clue": "voucher",
+    "context": "Der ___ gilt bis Dezember.",
+    "article": "der"
+  },
+  {
+    "word": "Hälfte",
+    "level": "A2",
+    "clue": "half",
+    "context": "Die ___ gehört dir.",
+    "article": "die"
+  },
+  {
+    "word": "Handwerk",
+    "level": "A2",
+    "clue": "craft",
+    "context": "Das ___ hat Tradition.",
+    "article": "das"
+  },
+  {
+    "word": "Hauptstadt",
+    "level": "A2",
+    "clue": "capital city",
+    "context": "Die ___ ist Berlin.",
+    "article": "die"
+  },
+  {
+    "word": "Hausarbeit",
+    "level": "A2",
+    "clue": "housework",
+    "context": "Die ___ ist langweilig.",
+    "article": "die"
+  },
+  {
+    "word": "Hausaufgabe",
+    "level": "A2",
+    "clue": "homework",
+    "context": "Die ___ ist schwer.",
+    "article": "die"
+  },
+  {
+    "word": "Hochzeit",
+    "level": "A2",
+    "clue": "wedding",
+    "context": "Die ___ ist im Sommer.",
+    "article": "die"
+  },
+  {
+    "word": "Hof",
+    "level": "A2",
+    "clue": "yard",
+    "context": "Der ___ ist groß.",
+    "article": "der"
+  },
+  {
+    "word": "Höhe",
+    "level": "A2",
+    "clue": "height",
+    "context": "Die ___ beträgt 200 Meter.",
+    "article": "die"
+  },
+  {
+    "word": "Impfung",
+    "level": "A2",
+    "clue": "vaccination",
+    "context": "Die ___ tut nicht weh.",
+    "article": "die"
+  },
+  {
+    "word": "Kabine",
+    "level": "A2",
+    "clue": "cabin",
+    "context": "Die ___ ist klein.",
+    "article": "die"
+  },
+  {
+    "word": "Kälte",
+    "level": "A2",
+    "clue": "cold",
+    "context": "Die ___ ist unerträglich.",
+    "article": "die"
+  },
+  {
+    "word": "Kantine",
+    "level": "A2",
+    "clue": "canteen",
+    "context": "Die ___ hat gutes Essen.",
+    "article": "die"
+  },
+  {
+    "word": "Kapitel",
+    "level": "A2",
+    "clue": "chapter",
+    "context": "Das ___ ist sehr lang.",
+    "article": "das"
+  },
+  {
+    "word": "Kartoffel",
+    "level": "A2",
+    "clue": "potato",
+    "context": "Die ___ kocht im Topf.",
+    "article": "die"
+  },
+  {
+    "word": "Kerze",
+    "level": "A2",
+    "clue": "candle",
+    "context": "Die ___ brennt seit Stunden.",
+    "article": "die"
+  },
+  {
+    "word": "Kneipe",
+    "level": "A2",
+    "clue": "pub",
+    "context": "Die ___ ist um die Ecke.",
+    "article": "die"
+  },
+  {
+    "word": "Koffer",
+    "level": "A2",
+    "clue": "suitcase",
+    "context": "Der ___ ist schon gepackt.",
+    "article": "der"
+  },
+  {
+    "word": "Kollegin",
+    "level": "A2",
+    "clue": "colleague",
+    "context": "Die ___ hilft mir oft.",
+    "article": "die"
+  },
+  {
+    "word": "Komfort",
+    "level": "A2",
+    "clue": "comfort",
+    "context": "Der ___ ist wichtig.",
+    "article": "der"
+  },
+  {
+    "word": "Konzert",
+    "level": "A2",
+    "clue": "concert",
+    "context": "Das ___ war fantastisch.",
+    "article": "das"
+  },
+  {
+    "word": "Korb",
+    "level": "A2",
+    "clue": "basket",
+    "context": "Der ___ ist aus Holz.",
+    "article": "der"
+  },
+  {
+    "word": "Kreis",
+    "level": "A2",
+    "clue": "circle",
+    "context": "Der ___ ist rund.",
+    "article": "der"
+  },
+  {
+    "word": "Küste",
+    "level": "A2",
+    "clue": "coast",
+    "context": "Die ___ ist wunderschön.",
+    "article": "die"
+  },
+  {
+    "word": "Leistung",
+    "level": "A2",
+    "clue": "performance",
+    "context": "Die ___ war sehr gut.",
+    "article": "die"
+  },
+  {
+    "word": "Lieferung",
+    "level": "A2",
+    "clue": "delivery",
+    "context": "Die ___ kommt morgen.",
+    "article": "die"
+  },
+  {
+    "word": "Lohn",
+    "level": "A2",
+    "clue": "wage",
+    "context": "Der ___ kommt am Freitag.",
+    "article": "der"
+  },
+  {
+    "word": "Luft",
+    "level": "A2",
+    "clue": "air",
+    "context": "Die ___ ist frisch.",
+    "article": "die"
+  },
+  {
+    "word": "Mahlzeit",
+    "level": "A2",
+    "clue": "meal",
+    "context": "Die ___ war lecker.",
+    "article": "die"
+  },
+  {
+    "word": "Mangel",
+    "level": "A2",
+    "clue": "shortage",
+    "context": "Der ___ ist deutlich.",
+    "article": "der"
+  },
+  {
+    "word": "Maschine",
+    "level": "A2",
+    "clue": "machine",
+    "context": "Die ___ läuft gut.",
+    "article": "die"
+  },
+  {
+    "word": "Material",
+    "level": "A2",
+    "clue": "material",
+    "context": "Das ___ ist hochwertig.",
+    "article": "das"
+  },
+  {
+    "word": "Mauer",
+    "level": "A2",
+    "clue": "wall",
+    "context": "Die ___ ist aus Stein.",
+    "article": "die"
+  },
+  {
+    "word": "Mehrheit",
+    "level": "A2",
+    "clue": "majority",
+    "context": "Die ___ war dafür.",
+    "article": "die"
+  },
+  {
+    "word": "Metzgerei",
+    "level": "A2",
+    "clue": "butcher shop",
+    "context": "Die ___ hat frisches Fleisch.",
+    "article": "die"
+  },
+  {
+    "word": "Mittagessen",
+    "level": "A2",
+    "clue": "lunch",
+    "context": "Das ___ ist um zwölf.",
+    "article": "das"
+  },
+  {
+    "word": "Möbel",
+    "level": "A2",
+    "clue": "furniture",
+    "context": "Die ___ sind aus Holz.",
+    "article": "die"
+  },
+  {
+    "word": "Mühe",
+    "level": "A2",
+    "clue": "effort",
+    "context": "Die ___ hat sich gelohnt.",
+    "article": "die"
+  },
+  {
+    "word": "Müll",
+    "level": "A2",
+    "clue": "trash",
+    "context": "Der ___ muss raus.",
+    "article": "der"
+  },
+  {
+    "word": "Münze",
+    "level": "A2",
+    "clue": "coin",
+    "context": "Die ___ ist aus Gold.",
+    "article": "die"
+  },
+  {
+    "word": "Nachteil",
+    "level": "A2",
+    "clue": "disadvantage",
+    "context": "Der ___ ist offensichtlich.",
+    "article": "der"
+  },
+  {
+    "word": "Nähe",
+    "level": "A2",
+    "clue": "vicinity",
+    "context": "In der ___ gibt es einen Park.",
+    "article": "die"
+  },
+  {
+    "word": "Nudel",
+    "level": "A2",
+    "clue": "noodle",
+    "context": "Die ___ schmeckt gut.",
+    "article": "die"
+  },
+  {
+    "word": "Packung",
+    "level": "A2",
+    "clue": "pack",
+    "context": "Die ___ ist offen.",
+    "article": "die"
+  },
+  {
+    "word": "Pfanne",
+    "level": "A2",
+    "clue": "pan",
+    "context": "Die ___ ist auf dem Herd.",
+    "article": "die"
+  },
+  {
+    "word": "Pflanze",
+    "level": "A2",
+    "clue": "plant",
+    "context": "Die ___ braucht Wasser.",
+    "article": "die"
+  },
+  {
+    "word": "Platz",
+    "level": "A2",
+    "clue": "square",
+    "context": "Der ___ ist in der Mitte.",
+    "article": "der"
+  },
+  {
+    "word": "Postamt",
+    "level": "A2",
+    "clue": "post office",
+    "context": "Das ___ schließt um fünf.",
+    "article": "das"
+  },
+  {
+    "word": "Praktikum",
+    "level": "A2",
+    "clue": "internship",
+    "context": "Das ___ dauert drei Monate.",
+    "article": "das"
+  },
+  {
+    "word": "Praxis",
+    "level": "A2",
+    "clue": "practice",
+    "context": "Die ___ ist geschlossen.",
+    "article": "die"
+  },
+  {
+    "word": "Rabatt",
+    "level": "A2",
+    "clue": "discount",
+    "context": "Der ___ beträgt 20 Prozent.",
+    "article": "der"
+  },
+  {
+    "word": "Radtour",
+    "level": "A2",
+    "clue": "bike tour",
+    "context": "Die ___ war anstrengend.",
+    "article": "die"
+  },
+  {
+    "word": "Regel",
+    "level": "A2",
+    "clue": "rule",
+    "context": "Die ___ gilt für alle.",
+    "article": "die"
+  },
+  {
+    "word": "Reihe",
+    "level": "A2",
+    "clue": "row",
+    "context": "Die ___ ist fast voll.",
+    "article": "die"
+  },
+  {
+    "word": "Reinigung",
+    "level": "A2",
+    "clue": "cleaning",
+    "context": "Die ___ ist jeden Freitag.",
+    "article": "die"
+  },
+  {
+    "word": "Rindfleisch",
+    "level": "A2",
+    "clue": "beef",
+    "context": "Das ___ braucht zwei Stunden.",
+    "article": "das"
+  },
+  {
+    "word": "Rückfahrt",
+    "level": "A2",
+    "clue": "return trip",
+    "context": "Die ___ dauert eine Stunde.",
+    "article": "die"
+  },
+  {
+    "word": "Sahne",
+    "level": "A2",
+    "clue": "cream",
+    "context": "Die ___ ist frisch.",
+    "article": "die"
+  },
+  {
+    "word": "Sammlung",
+    "level": "A2",
+    "clue": "collection",
+    "context": "Die ___ ist sehr groß.",
+    "article": "die"
+  },
+  {
+    "word": "Schicht",
+    "level": "A2",
+    "clue": "shift",
+    "context": "Die ___ beginnt um sechs.",
+    "article": "die"
+  },
+  {
+    "word": "Schlange",
+    "level": "A2",
+    "clue": "queue",
+    "context": "Die ___ ist sehr lang.",
+    "article": "die"
+  },
+  {
+    "word": "Schnee",
+    "level": "A2",
+    "clue": "snow",
+    "context": "Der ___ liegt überall.",
+    "article": "der"
+  },
+  {
+    "word": "Schnitzel",
+    "level": "A2",
+    "clue": "schnitzel",
+    "context": "Das ___ ist knusprig.",
+    "article": "das"
+  },
+  {
+    "word": "Schwimmbad",
+    "level": "A2",
+    "clue": "swimming pool",
+    "context": "Das ___ ist warm.",
+    "article": "das"
+  },
+  {
+    "word": "Semester",
+    "level": "A2",
+    "clue": "semester",
+    "context": "Das ___ beginnt im Oktober.",
+    "article": "das"
+  },
+  {
+    "word": "Soße",
+    "level": "A2",
+    "clue": "sauce",
+    "context": "Die ___ schmeckt würzig.",
+    "article": "die"
+  },
+  {
+    "word": "Spielplatz",
+    "level": "A2",
+    "clue": "playground",
+    "context": "Der ___ ist für Kinder.",
+    "article": "der"
+  },
+  {
+    "word": "Sporthalle",
+    "level": "A2",
+    "clue": "sports hall",
+    "context": "Die ___ ist groß.",
+    "article": "die"
+  },
+  {
+    "word": "Steckdose",
+    "level": "A2",
+    "clue": "power outlet",
+    "context": "Die ___ ist an der Wand.",
+    "article": "die"
+  },
+  {
+    "word": "Stelle",
+    "level": "A2",
+    "clue": "position",
+    "context": "Die ___ ist noch frei.",
+    "article": "die"
+  },
+  {
+    "word": "Stempel",
+    "level": "A2",
+    "clue": "stamp",
+    "context": "Der ___ fehlt noch.",
+    "article": "der"
+  },
+  {
+    "word": "Stockwerk",
+    "level": "A2",
+    "clue": "floor",
+    "context": "Das ___ hat zehn Zimmer.",
+    "article": "das"
+  },
+  {
+    "word": "Störung",
+    "level": "A2",
+    "clue": "disturbance",
+    "context": "Die ___ dauert lange.",
+    "article": "die"
+  },
+  {
+    "word": "Teppich",
+    "level": "A2",
+    "clue": "carpet",
+    "context": "Der ___ ist neu.",
+    "article": "der"
+  },
+  {
+    "word": "Tor",
+    "level": "A2",
+    "clue": "gate",
+    "context": "Das ___ ist geschlossen.",
+    "article": "das"
+  },
+  {
+    "word": "Traum",
+    "level": "A2",
+    "clue": "dream",
+    "context": "Der ___ war schön.",
+    "article": "der"
+  },
+  {
+    "word": "Trinkgeld",
+    "level": "A2",
+    "clue": "tip",
+    "context": "Das ___ war großzügig.",
+    "article": "das"
+  },
+  {
+    "word": "Tüte",
+    "level": "A2",
+    "clue": "bag",
+    "context": "Die ___ ist aus Papier.",
+    "article": "die"
+  },
+  {
+    "word": "Übersetzung",
+    "level": "A2",
+    "clue": "translation",
+    "context": "Die ___ ist gut.",
+    "article": "die"
+  },
+  {
+    "word": "Übung",
+    "level": "A2",
+    "clue": "exercise",
+    "context": "Die ___ ist leicht.",
+    "article": "die"
+  },
+  {
+    "word": "Unfall",
+    "level": "A2",
+    "clue": "accident",
+    "context": "Der ___ war schlimm.",
+    "article": "der"
+  },
+  {
+    "word": "Verband",
+    "level": "A2",
+    "clue": "bandage",
+    "context": "Der ___ muss gewechselt werden.",
+    "article": "der"
+  },
+  {
+    "word": "Verbot",
+    "level": "A2",
+    "clue": "prohibition",
+    "context": "Das ___ gilt hier.",
+    "article": "das"
+  },
+  {
+    "word": "Verhalten",
+    "level": "A2",
+    "clue": "behavior",
+    "context": "Das ___ war nicht gut.",
+    "article": "das"
+  },
+  {
+    "word": "Versicherung",
+    "level": "A2",
+    "clue": "insurance",
+    "context": "Die ___ zahlt alles.",
+    "article": "die"
+  },
+  {
+    "word": "Vorhang",
+    "level": "A2",
+    "clue": "curtain",
+    "context": "Der ___ ist zu.",
+    "article": "der"
+  },
+  {
+    "word": "Vorstellung",
+    "level": "A2",
+    "clue": "performance",
+    "context": "Die ___ beginnt um acht.",
+    "article": "die"
+  },
+  {
+    "word": "Waage",
+    "level": "A2",
+    "clue": "scale",
+    "context": "Die ___ zeigt 70 Kilo.",
+    "article": "die"
+  },
+  {
+    "word": "Wald",
+    "level": "A2",
+    "clue": "forest",
+    "context": "Der ___ ist dunkel.",
+    "article": "der"
+  },
+  {
+    "word": "Wäsche",
+    "level": "A2",
+    "clue": "laundry",
+    "context": "Die ___ hängt draußen.",
+    "article": "die"
+  },
+  {
+    "word": "Werkzeug",
+    "level": "A2",
+    "clue": "tool",
+    "context": "Das ___ liegt in der Garage.",
+    "article": "das"
+  },
+  {
+    "word": "Wiese",
+    "level": "A2",
+    "clue": "meadow",
+    "context": "Die ___ ist voller Blumen.",
+    "article": "die"
+  },
+  {
+    "word": "Wolke",
+    "level": "A2",
+    "clue": "cloud",
+    "context": "Die ___ ist grau.",
+    "article": "die"
+  },
+  {
+    "word": "Wunde",
+    "level": "A2",
+    "clue": "wound",
+    "context": "Die ___ heilt langsam.",
+    "article": "die"
+  },
+  {
+    "word": "Zaun",
+    "level": "A2",
+    "clue": "fence",
+    "context": "Der ___ ist aus Holz.",
+    "article": "der"
+  },
+  {
+    "word": "Zeile",
+    "level": "A2",
+    "clue": "line",
+    "context": "Die ___ ist zu lang.",
+    "article": "die"
+  },
+  {
+    "word": "Zeitschrift",
+    "level": "A2",
+    "clue": "magazine",
+    "context": "Die ___ liegt auf dem Tisch.",
+    "article": "die"
+  },
+  {
+    "word": "Zeitung",
+    "level": "A2",
+    "clue": "newspaper",
+    "context": "Die ___ kommt jeden Morgen.",
+    "article": "die"
+  },
+  {
+    "word": "Zettel",
+    "level": "A2",
+    "clue": "note",
+    "context": "Der ___ liegt auf dem Tisch.",
+    "article": "der"
+  },
+  {
+    "word": "Zimmer",
+    "level": "A2",
+    "clue": "room",
+    "context": "Das ___ ist sauber.",
+    "article": "das"
+  },
+  {
+    "word": "Zucker",
+    "level": "A2",
+    "clue": "sugar",
+    "context": "Der ___ ist im Schrank.",
+    "article": "der"
+  },
+  {
+    "word": "Zugang",
+    "level": "A2",
+    "clue": "access",
+    "context": "Der ___ ist frei.",
+    "article": "der"
+  },
+  {
+    "word": "Zustand",
+    "level": "A2",
+    "clue": "condition",
+    "context": "Der ___ ist sehr gut.",
+    "article": "der"
+  },
+  {
+    "word": "Abschluss",
+    "level": "A2",
+    "clue": "graduation",
+    "context": "Der ___ war im Juni.",
+    "article": "der"
+  },
+  {
+    "word": "Angebot",
+    "level": "A2",
+    "clue": "offer",
+    "context": "Das ___ ist günstig.",
+    "article": "das"
+  },
+  {
+    "word": "Anmeldung",
+    "level": "A2",
+    "clue": "registration",
+    "context": "Die ___ ist bis Freitag.",
+    "article": "die"
+  },
+  {
+    "word": "Antrag",
+    "level": "A2",
+    "clue": "application",
+    "context": "Der ___ wurde genehmigt.",
+    "article": "der"
+  },
+  {
+    "word": "Ärger",
+    "level": "A2",
+    "clue": "trouble",
+    "context": "Der ___ ist groß.",
+    "article": "der"
+  },
+  {
+    "word": "Ausstellung",
+    "level": "A2",
+    "clue": "exhibition",
+    "context": "Die ___ war interessant.",
+    "article": "die"
+  },
+  {
+    "word": "Bedeutung",
+    "level": "A2",
+    "clue": "meaning",
+    "context": "Die ___ ist unklar.",
+    "article": "die"
+  },
+  {
+    "word": "Beitrag",
+    "level": "A2",
+    "clue": "contribution",
+    "context": "Der ___ kostet 50 Euro.",
+    "article": "der"
+  },
+  {
+    "word": "Beratung",
+    "level": "A2",
+    "clue": "consultation",
+    "context": "Die ___ war sehr hilfreich.",
+    "article": "die"
+  },
+  {
+    "word": "Bericht",
+    "level": "A2",
+    "clue": "report",
+    "context": "Der ___ ist fertig.",
+    "article": "der"
+  },
+  {
+    "word": "Bescheid",
+    "level": "A2",
+    "clue": "notification",
+    "context": "Der ___ kam per Post.",
+    "article": "der"
+  },
+  {
+    "word": "Betrieb",
+    "level": "A2",
+    "clue": "operation",
+    "context": "Der ___ läuft normal.",
+    "article": "der"
+  },
+  {
+    "word": "Blitz",
+    "level": "A2",
+    "clue": "lightning",
+    "context": "Der ___ war sehr hell.",
+    "article": "der"
+  },
+  {
+    "word": "Boden",
+    "level": "A2",
+    "clue": "floor",
+    "context": "Der ___ ist aus Holz.",
+    "article": "der"
+  },
+  {
+    "word": "Brunnen",
+    "level": "A2",
+    "clue": "fountain",
+    "context": "Der ___ ist auf dem Platz.",
+    "article": "der"
+  },
+  {
+    "word": "Buchhandlung",
+    "level": "A2",
+    "clue": "bookstore",
+    "context": "Die ___ hat ein großes Angebot.",
+    "article": "die"
+  },
+  {
+    "word": "Dame",
+    "level": "A2",
+    "clue": "lady",
+    "context": "Die ___ wartet draußen.",
+    "article": "die"
+  },
+  {
+    "word": "Erholung",
+    "level": "A2",
+    "clue": "relaxation",
+    "context": "Die ___ tut mir gut.",
+    "article": "die"
+  },
+  {
+    "word": "Fest",
+    "level": "A2",
+    "clue": "festival",
+    "context": "Das ___ ist am Wochenende.",
+    "article": "das"
+  },
+  {
+    "word": "Gartenarbeit",
+    "level": "A2",
+    "clue": "gardening",
+    "context": "Die ___ macht mir Spaß.",
+    "article": "die"
+  },
+  {
+    "word": "Gastgeber",
+    "level": "A2",
+    "clue": "host",
+    "context": "Der ___ war sehr nett.",
+    "article": "der"
+  },
+  {
+    "word": "Geduld",
+    "level": "A2",
+    "clue": "patience",
+    "context": "Die ___ ist wichtig.",
+    "article": "die"
+  },
+  {
+    "word": "Geräusch",
+    "level": "A2",
+    "clue": "sound",
+    "context": "Das ___ war laut.",
+    "article": "das"
+  },
+  {
+    "word": "Handwerker",
+    "level": "A2",
+    "clue": "craftsman",
+    "context": "Der ___ kommt morgen.",
+    "article": "der"
+  }
 ]
