@@ -27,7 +27,7 @@ function Play() {
 
   const {
     userGrid, cellStatus, selectedCell, direction,
-    activeClue, hintsUsed, isComplete,
+    activeClue, hintsUsed, isComplete, lockedCells,
     selectCell, inputLetter, deleteLetter, checkAnswers, revealLetter,
   } = useGame(puzzle);
 
@@ -91,6 +91,7 @@ function Play() {
         selectedCell={selectedCell}
         direction={direction}
         activeClue={activeClue}
+        lockedCells={lockedCells}
         onCellClick={selectCell}
       />
       <div className="play-actions">

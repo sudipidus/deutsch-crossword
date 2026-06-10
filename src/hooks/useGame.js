@@ -1,16 +1,41 @@
 import { useState, useCallback, useMemo } from 'react';
 
 const MAX_HINTS = 3;
+const PREFILL_RATIO = 0.5;
+
+function buildPrefilled(grid, clues) {
+  const userGrid = grid.map(row => row.map(cell => (cell !== null ? '' : null)));
+
+  for (const clue of clues) {
+    const len = clue.word.length;
+    // Pick ~50% of letter positions to reveal
+    const indices = Array.from({ length: len }, (_, i) => i);
+    // Shuffle
+    for (let i = indices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    const count = Math.max(1, Math.floor(len * PREFILL_RATIO));
+    const toReveal = indices.slice(0, count);
+
+    for (const idx of toReveal) {
+      const r = clue.direction === 'across' ? clue.row : clue.row + idx;
+      const c = clue.direction === 'across' ? clue.col + idx : clue.col;
+      userGrid[r][c] = grid[r][c];
+    }
+  }
+
+  return userGrid;
+}
 
 export function useGame(puzzle) {
   const { grid, clues } = puzzle;
   const rows = grid.length;
   const cols = grid[0].length;
 
-  // Build initial empty user grid ('' for playable cells, null for black cells)
   const initialUserGrid = useMemo(
-    () => grid.map(row => row.map(cell => (cell !== null ? '' : null))),
-    [grid]
+    () => buildPrefilled(grid, clues),
+    [grid, clues]
   );
 
   const initialCellStatus = useMemo(
@@ -24,7 +49,11 @@ export function useGame(puzzle) {
   const [direction, setDirection] = useState('across');
   const [hintsUsed, setHintsUsed] = useState(0);
 
-  // Find active clue for the selected cell and direction
+  // Track which cells were prefilled (locked — can't be edited)
+  const lockedCells = useMemo(() => {
+    return initialUserGrid.map(row => row.map(cell => cell !== '' && cell !== null));
+  }, [initialUserGrid]);
+
   const activeClue = useMemo(() => {
     if (!selectedCell) return null;
     const { row, col } = selectedCell;
@@ -35,14 +64,12 @@ export function useGame(puzzle) {
         if (dir === 'across') {
           return c.row === row && col >= c.col && col < c.col + c.word.length;
         }
-        // down
         return c.col === col && row >= c.row && row < c.row + c.word.length;
       });
 
     return findClue(direction) || findClue(direction === 'across' ? 'down' : 'across') || null;
   }, [selectedCell, direction, clues]);
 
-  // Check if puzzle is complete
   const isComplete = useMemo(() => {
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
@@ -55,11 +82,9 @@ export function useGame(puzzle) {
   }, [userGrid, grid, rows, cols]);
 
   const selectCell = useCallback((row, col) => {
-    // Ignore black cells
     if (grid[row][col] === null) return;
 
     setSelectedCell(prev => {
-      // Toggle direction if selecting the same cell
       if (prev && prev.row === row && prev.col === col) {
         setDirection(d => (d === 'across' ? 'down' : 'across'));
       }
@@ -70,15 +95,23 @@ export function useGame(puzzle) {
   const inputLetter = useCallback((letter) => {
     if (!selectedCell) return;
     const { row, col } = selectedCell;
-    const upper = letter.toUpperCase();
+    if (lockedCells[row][col]) {
+      // Skip to next unlocked cell
+      const nextRow = direction === 'across' ? row : row + 1;
+      const nextCol = direction === 'across' ? col + 1 : col;
+      if (nextRow < rows && nextCol < cols && grid[nextRow][nextCol] !== null) {
+        setSelectedCell({ row: nextRow, col: nextCol });
+      }
+      return;
+    }
 
+    const upper = letter.toUpperCase();
     setUserGrid(prev => {
       const next = prev.map(r => [...r]);
       next[row][col] = upper;
       return next;
     });
 
-    // Advance cursor in current direction
     setSelectedCell(prev => {
       if (!prev) return prev;
       let nextRow = prev.row;
@@ -88,17 +121,17 @@ export function useGame(puzzle) {
       } else {
         nextRow += 1;
       }
-      // Stay in bounds and on playable cells
       if (nextRow < rows && nextCol < cols && grid[nextRow][nextCol] !== null) {
         return { row: nextRow, col: nextCol };
       }
       return prev;
     });
-  }, [selectedCell, direction, grid, rows, cols]);
+  }, [selectedCell, direction, grid, rows, cols, lockedCells]);
 
   const deleteLetter = useCallback(() => {
     if (!selectedCell) return;
     const { row, col } = selectedCell;
+    if (lockedCells[row][col]) return;
 
     setUserGrid(prev => {
       const next = prev.map(r => [...r]);
@@ -106,7 +139,6 @@ export function useGame(puzzle) {
       return next;
     });
 
-    // Move cursor backward
     setSelectedCell(prev => {
       if (!prev) return prev;
       let nextRow = prev.row;
@@ -121,7 +153,7 @@ export function useGame(puzzle) {
       }
       return prev;
     });
-  }, [selectedCell, direction, grid]);
+  }, [selectedCell, direction, grid, lockedCells]);
 
   const checkAnswers = useCallback(() => {
     setCellStatus(
@@ -129,11 +161,12 @@ export function useGame(puzzle) {
         row.map((cell, c) => {
           if (grid[r][c] === null) return null;
           if (cell === '') return null;
+          if (lockedCells[r][c]) return 'correct';
           return cell === grid[r][c] ? 'correct' : 'wrong';
         })
       )
     );
-  }, [userGrid, grid]);
+  }, [userGrid, grid, lockedCells]);
 
   const revealLetter = useCallback(() => {
     if (!selectedCell) return;
@@ -142,6 +175,7 @@ export function useGame(puzzle) {
     const { row, col } = selectedCell;
     const correctLetter = grid[row][col];
     if (correctLetter === null) return;
+    if (lockedCells[row][col]) return;
 
     setUserGrid(prev => {
       const next = prev.map(r => [...r]);
@@ -149,7 +183,7 @@ export function useGame(puzzle) {
       return next;
     });
     setHintsUsed(prev => prev + 1);
-  }, [selectedCell, hintsUsed, grid]);
+  }, [selectedCell, hintsUsed, grid, lockedCells]);
 
   return {
     userGrid,
@@ -159,6 +193,7 @@ export function useGame(puzzle) {
     activeClue,
     hintsUsed,
     isComplete,
+    lockedCells,
     selectCell,
     inputLetter,
     deleteLetter,
