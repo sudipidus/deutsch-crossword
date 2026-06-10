@@ -1,7 +1,8 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useRef } from 'react';
 
 const MAX_HINTS = 3;
 const PREFILL_RATIO = 0.5;
+const CHECK_DISPLAY_MS = 3000;
 
 function buildPrefilled(grid, clues) {
   const userGrid = grid.map(row => row.map(cell => (cell !== null ? '' : null)));
@@ -30,6 +31,7 @@ export function useGame(puzzle) {
   const { grid, clues } = puzzle;
   const rows = grid.length;
   const cols = grid[0].length;
+  const checkTimerRef = useRef(null);
 
   const initialUserGrid = useMemo(
     () => buildPrefilled(grid, clues),
@@ -159,6 +161,11 @@ export function useGame(puzzle) {
   }, [selectedCell, direction, grid, lockedCells]);
 
   const checkAnswers = useCallback(() => {
+    // Clear any existing timer
+    if (checkTimerRef.current) {
+      clearTimeout(checkTimerRef.current);
+    }
+
     setCellStatus(
       userGrid.map((row, r) =>
         row.map((cell, c) => {
@@ -169,6 +176,12 @@ export function useGame(puzzle) {
         })
       )
     );
+
+    // Auto-clear after 3 seconds
+    checkTimerRef.current = setTimeout(() => {
+      setCellStatus(grid.map(row => row.map(() => null)));
+      checkTimerRef.current = null;
+    }, CHECK_DISPLAY_MS);
   }, [userGrid, grid, lockedCells]);
 
   const revealLetter = useCallback(() => {
