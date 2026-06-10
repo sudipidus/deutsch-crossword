@@ -28,6 +28,27 @@
   opacity: 0.9;
 }
 
+.learn-button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 2px solid var(--color-a2);
+  background: transparent;
+  color: var(--color-a2);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.learn-button:hover:not(:disabled) {
+  background: rgba(250, 204, 21, 0.1);
+}
+
+.learn-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
 .timer {
   font-family: monospace;
   font-size: 0.9rem;

@@ -5,6 +5,7 @@ import ClueBar from '../components/ClueBar';
 import ClueList from '../components/ClueList';
 import HintButton from '../components/HintButton';
 import Timer from '../components/Timer';
+import WordDetail from '../components/WordDetail';
 import { useGame } from '../hooks/useGame';
 import { useProgress } from '../hooks/useProgress';
 import { generateCrossword } from '../engine/generateCrossword';
@@ -12,11 +13,18 @@ import { getAllWords } from '../data/wordAdapter';
 import prebuiltPuzzles from '../data/prebuilt.json';
 import './Play.css';
 
+// Build a lookup map for word details
+const wordDetailMap = new Map();
+for (const w of getAllWords()) {
+  wordDetailMap.set(w.word.toUpperCase(), w.details);
+}
+
 function Play() {
   const [searchParams] = useSearchParams();
   const puzzleId = searchParams.get('puzzle');
   const timerRef = useRef(0);
   const { markCompleted } = useProgress();
+  const [detailClue, setDetailClue] = useState(null);
 
   const puzzle = useMemo(() => {
     if (puzzleId && prebuiltPuzzles[puzzleId]) {
@@ -31,14 +39,12 @@ function Play() {
     selectCell, inputLetter, deleteLetter, checkAnswers, revealLetter,
   } = useGame(puzzle);
 
-  // Track elapsed time
   useEffect(() => {
     if (isComplete) return;
     const interval = setInterval(() => { timerRef.current += 1; }, 1000);
     return () => clearInterval(interval);
   }, [isComplete]);
 
-  // Persist completion
   useEffect(() => {
     if (isComplete) {
       const id = puzzleId || `generated-${Date.now()}`;
@@ -64,12 +70,15 @@ function Play() {
   }, [puzzle, userGrid]);
 
   const handleKeyDown = useCallback((e) => {
+    if (detailClue) return; // don't type while modal is open
     if (e.key.length === 1 && /[a-zA-ZäöüÄÖÜß]/.test(e.key)) {
       inputLetter(e.key);
     } else if (e.key === 'Backspace' && selectedCell) {
       deleteLetter();
+    } else if (e.key === 'Escape' && detailClue) {
+      setDetailClue(null);
     }
-  }, [inputLetter, deleteLetter, selectedCell]);
+  }, [inputLetter, deleteLetter, selectedCell, detailClue]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -79,6 +88,14 @@ function Play() {
   const handleClueClick = useCallback((clue) => {
     selectCell(clue.row, clue.col, clue.direction);
   }, [selectCell]);
+
+  const handleLearn = useCallback(() => {
+    if (!activeClue) return;
+    const details = wordDetailMap.get(activeClue.word);
+    if (details) {
+      setDetailClue({ ...activeClue, details });
+    }
+  }, [activeClue]);
 
   return (
     <div className="play-page">
@@ -102,6 +119,13 @@ function Play() {
           activeClue={activeClue}
           onRevealLetter={revealLetter}
         />
+        <button
+          className="learn-button"
+          onClick={handleLearn}
+          disabled={!activeClue}
+        >
+          Learn
+        </button>
         <Timer running={!isComplete} />
       </div>
       {isComplete && (
@@ -113,6 +137,9 @@ function Play() {
         onClueClick={handleClueClick}
         completedWords={completedWords}
       />
+      {detailClue && (
+        <WordDetail clue={detailClue} onClose={() => setDetailClue(null)} />
+      )}
     </div>
   );
 }
