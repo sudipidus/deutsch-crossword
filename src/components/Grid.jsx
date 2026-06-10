@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import './Grid.css';
 
 export default function Grid({
@@ -11,9 +11,12 @@ export default function Grid({
   activeClue,
   lockedCells,
   onCellClick,
+  onInput,
+  onDelete,
 }) {
   const rows = solutionGrid.length;
   const cols = solutionGrid[0].length;
+  const hiddenInputRef = useRef(null);
 
   // Build a map of clue numbers by (row, col)
   const clueNumberMap = {};
@@ -32,6 +35,30 @@ export default function Grid({
       highlightedCells.add(`${r}-${c}`);
     }
   }
+
+  const handleCellClick = useCallback((r, c) => {
+    onCellClick(r, c);
+    // Focus hidden input to open mobile keyboard
+    if (hiddenInputRef.current) {
+      hiddenInputRef.current.focus();
+    }
+  }, [onCellClick]);
+
+  const handleHiddenInput = useCallback((e) => {
+    const val = e.target.value;
+    if (val && /[a-zA-ZäöüÄÖÜß]/.test(val)) {
+      onInput(val);
+    }
+    // Always clear the hidden input
+    e.target.value = '';
+  }, [onInput]);
+
+  const handleHiddenKeyDown = useCallback((e) => {
+    if (e.key === 'Backspace') {
+      e.preventDefault();
+      onDelete();
+    }
+  }, [onDelete]);
 
   const cells = [];
   for (let r = 0; r < rows; r++) {
@@ -59,7 +86,7 @@ export default function Grid({
           key={key}
           className={classNames.join(' ')}
           onClick={() => {
-            if (!isBlack) onCellClick(r, c);
+            if (!isBlack) handleCellClick(r, c);
           }}
         >
           {clueNumber && <span className="cell-number">{clueNumber}</span>}
@@ -75,6 +102,17 @@ export default function Grid({
       style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
     >
       {cells}
+      <input
+        ref={hiddenInputRef}
+        className="grid-hidden-input"
+        type="text"
+        autoCapitalize="characters"
+        autoComplete="off"
+        autoCorrect="off"
+        spellCheck="false"
+        onInput={handleHiddenInput}
+        onKeyDown={handleHiddenKeyDown}
+      />
     </div>
   );
 }

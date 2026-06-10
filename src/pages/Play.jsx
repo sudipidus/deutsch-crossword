@@ -69,14 +69,17 @@ function Play() {
       .map(c => c.word);
   }, [puzzle, userGrid]);
 
+  // Desktop keyboard handler
   const handleKeyDown = useCallback((e) => {
-    if (detailClue) return; // don't type while modal is open
+    if (detailClue) return;
+    if (e.key === 'Escape') {
+      setDetailClue(null);
+      return;
+    }
     if (e.key.length === 1 && /[a-zA-ZäöüÄÖÜß]/.test(e.key)) {
       inputLetter(e.key);
     } else if (e.key === 'Backspace' && selectedCell) {
       deleteLetter();
-    } else if (e.key === 'Escape' && detailClue) {
-      setDetailClue(null);
     }
   }, [inputLetter, deleteLetter, selectedCell, detailClue]);
 
@@ -110,6 +113,8 @@ function Play() {
         activeClue={activeClue}
         lockedCells={lockedCells}
         onCellClick={selectCell}
+        onInput={inputLetter}
+        onDelete={deleteLetter}
       />
       <div className="play-actions">
         <button className="check-button" onClick={checkAnswers}>Check</button>
