@@ -27,6 +27,26 @@ function buildPrefilled(grid, clues) {
   return userGrid;
 }
 
+// Build a map of which directions each cell belongs to
+function buildCellDirections(grid, clues) {
+  const rows = grid.length;
+  const cols = grid[0].length;
+  // Each cell gets a Set of directions ('across', 'down')
+  const map = Array.from({ length: rows }, () =>
+    Array.from({ length: cols }, () => new Set())
+  );
+
+  for (const clue of clues) {
+    for (let i = 0; i < clue.word.length; i++) {
+      const r = clue.direction === 'across' ? clue.row : clue.row + i;
+      const c = clue.direction === 'across' ? clue.col + i : clue.col;
+      map[r][c].add(clue.direction);
+    }
+  }
+
+  return map;
+}
+
 export function useGame(puzzle) {
   const { grid, clues } = puzzle;
   const rows = grid.length;
@@ -41,6 +61,11 @@ export function useGame(puzzle) {
   const initialCellStatus = useMemo(
     () => grid.map(row => row.map(() => null)),
     [grid]
+  );
+
+  const cellDirections = useMemo(
+    () => buildCellDirections(grid, clues),
+    [grid, clues]
   );
 
   const [userGrid, setUserGrid] = useState(initialUserGrid);
@@ -84,19 +109,36 @@ export function useGame(puzzle) {
     if (grid[row][col] === null) return;
 
     if (forceDirection) {
+      // Explicit direction from clue click or nav arrows
       setDirection(forceDirection);
-    } else {
-      setSelectedCell(prev => {
-        if (prev && prev.row === row && prev.col === col) {
-          setDirection(d => (d === 'across' ? 'down' : 'across'));
-        }
-        return { row, col };
-      });
+      setSelectedCell({ row, col });
       return;
     }
 
-    setSelectedCell({ row, col });
-  }, [grid]);
+    const dirs = cellDirections[row][col];
+    const hasAcross = dirs.has('across');
+    const hasDown = dirs.has('down');
+
+    setSelectedCell(prev => {
+      const isSameCell = prev && prev.row === row && prev.col === col;
+
+      if (isSameCell && hasAcross && hasDown) {
+        // Intersection cell tapped again — toggle direction
+        setDirection(d => (d === 'across' ? 'down' : 'across'));
+      } else if (!isSameCell) {
+        // New cell — auto-detect direction
+        if (hasAcross && hasDown) {
+          // Intersection — keep current direction
+        } else if (hasAcross) {
+          setDirection('across');
+        } else if (hasDown) {
+          setDirection('down');
+        }
+      }
+
+      return { row, col };
+    });
+  }, [grid, cellDirections]);
 
   const inputLetter = useCallback((letter) => {
     if (!selectedCell) return;
@@ -161,7 +203,6 @@ export function useGame(puzzle) {
   }, [selectedCell, direction, grid, lockedCells]);
 
   const checkAnswers = useCallback(() => {
-    // Clear any existing timer
     if (checkTimerRef.current) {
       clearTimeout(checkTimerRef.current);
     }
@@ -177,7 +218,6 @@ export function useGame(puzzle) {
       )
     );
 
-    // Auto-clear after 3 seconds
     checkTimerRef.current = setTimeout(() => {
       setCellStatus(grid.map(row => row.map(() => null)));
       checkTimerRef.current = null;
