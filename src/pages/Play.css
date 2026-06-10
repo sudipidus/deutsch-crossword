@@ -1,0 +1,45 @@
+.play-page {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.play-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.check-button {
+  padding: 8px 20px;
+  border-radius: 6px;
+  border: none;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.check-button:hover {
+  opacity: 0.9;
+}
+
+.timer {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.complete-banner {
+  text-align: center;
+  padding: 12px;
+  background: rgba(74, 222, 128, 0.15);
+  border: 2px solid var(--color-correct);
+  border-radius: 8px;
+  font-weight: 700;
+  color: var(--color-correct);
+}
