@@ -2,29 +2,69 @@
   background: var(--color-accent);
   color: var(--color-bg);
   border-radius: 8px;
-  padding: 8px 12px;
+  padding: 6px 4px;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
-  min-height: 40px;
+  gap: 4px;
+  min-height: 44px;
 }
 
 .clue-bar--empty {
   justify-content: center;
   opacity: 0.7;
+  padding: 8px 12px;
 }
 
 .clue-placeholder {
   font-style: italic;
 }
 
-.level-badge {
-  font-size: 0.75rem;
+.clue-nav-btn {
+  background: none;
+  border: none;
+  color: var(--color-bg);
+  font-size: 1.5rem;
   font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 12px;
+  cursor: pointer;
+  padding: 0 8px;
+  line-height: 1;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.clue-nav-btn:hover {
+  opacity: 1;
+}
+
+.clue-bar-content {
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.clue-bar-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.clue-dir-icon {
+  font-size: 1rem;
+  font-weight: 700;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.level-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 10px;
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 
 .level-a1 {
@@ -43,16 +83,26 @@
 }
 
 .clue-label {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
 }
 
 .clue-text {
   font-weight: 500;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .clue-context {
+  display: block;
   font-style: italic;
-  font-size: 0.85rem;
-  opacity: 0.8;
-  width: 100%;
+  font-size: 0.8rem;
+  opacity: 0.75;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -8,15 +8,26 @@ const mockClues = [
   { number: 1, direction: 'down', clue: 'car', context: 'Das ___ ist schnell.', level: 'A2', word: 'AUTO', row: 0, col: 0 },
 ];
 
+function expandList() {
+  fireEvent.click(screen.getByText(/Show Clues/));
+}
+
 describe('ClueList', () => {
-  it('renders Across and Down tabs', () => {
+  it('starts collapsed with a Show Clues button', () => {
     render(<ClueList clues={mockClues} activeClue={null} onClueClick={() => {}} completedWords={[]} />);
+    expect(screen.getByText(/Show Clues/)).toBeInTheDocument();
+  });
+
+  it('renders Across and Down tabs after expanding', () => {
+    render(<ClueList clues={mockClues} activeClue={null} onClueClick={() => {}} completedWords={[]} />);
+    expandList();
     expect(screen.getByText('Across')).toBeInTheDocument();
     expect(screen.getByText('Down')).toBeInTheDocument();
   });
 
   it('shows clues for the selected tab', () => {
     render(<ClueList clues={mockClues} activeClue={null} onClueClick={() => {}} completedWords={[]} />);
+    expandList();
     expect(screen.getByText(/apple/)).toBeInTheDocument();
     expect(screen.getByText(/house/)).toBeInTheDocument();
   });
@@ -24,12 +35,14 @@ describe('ClueList', () => {
   it('calls onClueClick when a clue is tapped', () => {
     const handleClick = vi.fn();
     render(<ClueList clues={mockClues} activeClue={null} onClueClick={handleClick} completedWords={[]} />);
+    expandList();
     fireEvent.click(screen.getByText(/apple/));
     expect(handleClick).toHaveBeenCalledWith(mockClues[0]);
   });
 
   it('switches tabs when Down is clicked', () => {
     render(<ClueList clues={mockClues} activeClue={null} onClueClick={() => {}} completedWords={[]} />);
+    expandList();
     fireEvent.click(screen.getByText('Down'));
     expect(screen.getByText(/car/)).toBeInTheDocument();
   });

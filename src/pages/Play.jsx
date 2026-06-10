@@ -13,7 +13,6 @@ import { getAllWords } from '../data/wordAdapter';
 import prebuiltPuzzles from '../data/prebuilt.json';
 import './Play.css';
 
-// Build a lookup map for word details
 const wordDetailMap = new Map();
 for (const w of getAllWords()) {
   wordDetailMap.set(w.word.toUpperCase(), w.details);
@@ -38,6 +37,21 @@ function Play() {
     activeClue, hintsUsed, isComplete, lockedCells,
     selectCell, inputLetter, deleteLetter, checkAnswers, revealLetter,
   } = useGame(puzzle);
+
+  // Sorted clue list for prev/next navigation
+  const sortedClues = useMemo(() => {
+    return [...puzzle.clues].sort((a, b) => {
+      if (a.direction !== b.direction) return a.direction === 'across' ? -1 : 1;
+      return a.number - b.number;
+    });
+  }, [puzzle.clues]);
+
+  const activeClueIndex = useMemo(() => {
+    if (!activeClue) return -1;
+    return sortedClues.findIndex(
+      c => c.number === activeClue.number && c.direction === activeClue.direction
+    );
+  }, [activeClue, sortedClues]);
 
   useEffect(() => {
     if (isComplete) return;
@@ -69,7 +83,6 @@ function Play() {
       .map(c => c.word);
   }, [puzzle, userGrid]);
 
-  // Desktop keyboard handler
   const handleKeyDown = useCallback((e) => {
     if (detailClue) return;
     if (e.key === 'Escape') {
@@ -92,6 +105,26 @@ function Play() {
     selectCell(clue.row, clue.col, clue.direction);
   }, [selectCell]);
 
+  const handleToggleDirection = useCallback(() => {
+    if (selectedCell) {
+      selectCell(selectedCell.row, selectedCell.col);
+    }
+  }, [selectedCell, selectCell]);
+
+  const handlePrevClue = useCallback(() => {
+    if (sortedClues.length === 0) return;
+    const idx = activeClueIndex <= 0 ? sortedClues.length - 1 : activeClueIndex - 1;
+    const clue = sortedClues[idx];
+    selectCell(clue.row, clue.col, clue.direction);
+  }, [activeClueIndex, sortedClues, selectCell]);
+
+  const handleNextClue = useCallback(() => {
+    if (sortedClues.length === 0) return;
+    const idx = activeClueIndex >= sortedClues.length - 1 ? 0 : activeClueIndex + 1;
+    const clue = sortedClues[idx];
+    selectCell(clue.row, clue.col, clue.direction);
+  }, [activeClueIndex, sortedClues, selectCell]);
+
   const handleLearn = useCallback(() => {
     if (!activeClue) return;
     const details = wordDetailMap.get(activeClue.word);
@@ -102,7 +135,13 @@ function Play() {
 
   return (
     <div className="play-page">
-      <ClueBar clue={activeClue} />
+      <ClueBar
+        clue={activeClue}
+        direction={direction}
+        onToggleDirection={handleToggleDirection}
+        onPrevClue={handlePrevClue}
+        onNextClue={handleNextClue}
+      />
       <Grid
         solutionGrid={puzzle.grid}
         userGrid={userGrid}

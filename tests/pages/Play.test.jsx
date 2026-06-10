@@ -4,14 +4,14 @@ import { MemoryRouter } from 'react-router-dom';
 import Play from '../../src/pages/Play';
 
 describe('Play', () => {
-  it('renders the crossword grid and clue list', () => {
+  it('renders the crossword grid and action buttons', () => {
     render(
       <MemoryRouter>
         <Play />
       </MemoryRouter>
     );
-    expect(screen.getByText('Across')).toBeInTheDocument();
-    expect(screen.getByText('Down')).toBeInTheDocument();
     expect(screen.getByText('Check')).toBeInTheDocument();
+    expect(screen.getByText('Learn')).toBeInTheDocument();
+    expect(screen.getByText(/Show Clues/)).toBeInTheDocument();
   });
 });
