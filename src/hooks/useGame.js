@@ -142,14 +142,17 @@ export function useGame(puzzle) {
 
   const inputLetter = useCallback((letter) => {
     if (!selectedCell) return;
-    const { row, col } = selectedCell;
-    if (lockedCells[row][col]) {
+    let { row, col } = selectedCell;
+
+    // Skip past locked cells to find the next editable cell
+    while (lockedCells[row][col]) {
       const nextRow = direction === 'across' ? row : row + 1;
       const nextCol = direction === 'across' ? col + 1 : col;
-      if (nextRow < rows && nextCol < cols && grid[nextRow][nextCol] !== null) {
-        setSelectedCell({ row: nextRow, col: nextCol });
+      if (nextRow >= rows || nextCol >= cols || grid[nextRow][nextCol] === null) {
+        return; // Hit boundary or black square, nothing to do
       }
-      return;
+      row = nextRow;
+      col = nextCol;
     }
 
     const upper = letter.toUpperCase();
@@ -159,20 +162,14 @@ export function useGame(puzzle) {
       return next;
     });
 
-    setSelectedCell(prev => {
-      if (!prev) return prev;
-      let nextRow = prev.row;
-      let nextCol = prev.col;
-      if (direction === 'across') {
-        nextCol += 1;
-      } else {
-        nextRow += 1;
-      }
-      if (nextRow < rows && nextCol < cols && grid[nextRow][nextCol] !== null) {
-        return { row: nextRow, col: nextCol };
-      }
-      return prev;
-    });
+    // Always advance cursor by one step in the current direction
+    let nextRow = direction === 'across' ? row : row + 1;
+    let nextCol = direction === 'across' ? col + 1 : col;
+    if (nextRow < rows && nextCol < cols && grid[nextRow][nextCol] !== null) {
+      setSelectedCell({ row: nextRow, col: nextCol });
+    } else {
+      setSelectedCell({ row, col });
+    }
   }, [selectedCell, direction, grid, rows, cols, lockedCells]);
 
   const deleteLetter = useCallback(() => {
