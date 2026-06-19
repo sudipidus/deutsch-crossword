@@ -56,7 +56,7 @@ describe('useGame', () => {
     expect(result.current.direction).toBe('across');
   });
 
-  it('inputLetter skips locked cells', () => {
+  it('inputLetter overwrites the selected cell even if it is prefilled', () => {
     const { result } = renderHook(() => useGame(mockPuzzle));
     let lockedR = -1, lockedC = -1;
     for (let r = 0; r < result.current.lockedCells.length; r++) {
@@ -67,12 +67,28 @@ describe('useGame', () => {
       }
       if (lockedR >= 0) break;
     }
-    if (lockedR >= 0) {
-      const original = result.current.userGrid[lockedR][lockedC];
-      act(() => { result.current.selectCell(lockedR, lockedC); });
-      act(() => { result.current.inputLetter('X'); });
-      expect(result.current.userGrid[lockedR][lockedC]).toBe(original);
+    expect(lockedR, 'mockPuzzle should have at least one prefilled cell').toBeGreaterThanOrEqual(0);
+    act(() => { result.current.selectCell(lockedR, lockedC); });
+    act(() => { result.current.inputLetter('X'); });
+    // The selected cell receives the input rather than the input skipping past it.
+    expect(result.current.userGrid[lockedR][lockedC]).toBe('X');
+  });
+
+  it('deleteLetter clears the selected cell even if it is prefilled', () => {
+    const { result } = renderHook(() => useGame(mockPuzzle));
+    let lockedR = -1, lockedC = -1;
+    for (let r = 0; r < result.current.lockedCells.length; r++) {
+      for (let c = 0; c < result.current.lockedCells[r].length; c++) {
+        if (result.current.lockedCells[r][c]) {
+          lockedR = r; lockedC = c; break;
+        }
+      }
+      if (lockedR >= 0) break;
     }
+    expect(lockedR).toBeGreaterThanOrEqual(0);
+    act(() => { result.current.selectCell(lockedR, lockedC); });
+    act(() => { result.current.deleteLetter(); });
+    expect(result.current.userGrid[lockedR][lockedC]).toBe('');
   });
 
   it('inputLetter fills unlocked cells', () => {
@@ -122,6 +138,36 @@ describe('useGame', () => {
       expect(result.current.userGrid[unlockedR][unlockedC]).toBe(mockPuzzle.grid[unlockedR][unlockedC]);
       expect(result.current.hintsUsed).toBe(1);
     }
+  });
+
+  it('returns arrays matching the new puzzle dimensions on the same render', () => {
+    const smallPuzzle = {
+      grid: [['H', 'A', 'U', 'S']],
+      clues: [
+        { number: 1, direction: 'across', clue: 'house', context: '', level: 'A1', word: 'HAUS', row: 0, col: 0, article: 'das' },
+      ],
+      placedWords: [],
+    };
+    const renders = [];
+    // Record the grids exactly as the hook returns them on each render pass,
+    // so we can inspect the first (transitional) render after the switch
+    // before any post-render reset effect re-renders with corrected values.
+    const { rerender } = renderHook(
+      ({ p }) => {
+        const game = useGame(p);
+        renders.push({ userRows: game.userGrid.length, statusRows: game.cellStatus.length });
+        return game;
+      },
+      { initialProps: { p: smallPuzzle } }
+    );
+
+    renders.length = 0;
+    rerender({ p: mockPuzzle });
+
+    // The FIRST render after the switch must already expose arrays sized to
+    // the new puzzle — otherwise consumers like <Grid> crash indexing them.
+    expect(renders[0].userRows).toBe(mockPuzzle.grid.length);
+    expect(renders[0].statusRows).toBe(mockPuzzle.grid.length);
   });
 
   it('toggleDirection switches at intersection cells', () => {

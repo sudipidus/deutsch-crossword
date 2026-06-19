@@ -5,6 +5,39 @@
   padding: 12px 0;
 }
 
+.level-selector {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.level-button {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 2px solid var(--color-text-secondary);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.level-button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.level-active {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.level-active:hover {
+  color: var(--color-bg);
+}
+
 .play-actions {
   display: flex;
   align-items: center;

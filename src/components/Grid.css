@@ -25,14 +25,6 @@
   cursor: default;
 }
 
-.grid-cell.locked {
-  cursor: default;
-}
-
-.grid-cell.locked .cell-letter {
-  color: var(--color-text-secondary);
-}
-
 /* Check result states — lowest visual priority */
 .grid-cell.correct {
   border-color: var(--color-correct);

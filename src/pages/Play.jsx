@@ -9,32 +9,57 @@ import WordDetail from '../components/WordDetail';
 import { useGame } from '../hooks/useGame';
 import { useProgress } from '../hooks/useProgress';
 import { generateCrossword } from '../engine/generateCrossword';
-import { getAllWords } from '../data/wordAdapter';
+import { getAllWords, getWordsByLevel } from '../data/wordAdapter';
 import prebuiltPuzzles from '../data/prebuilt.json';
 import './Play.css';
+
+const LEVELS = ['A1', 'A2', 'B1', 'Mixed'];
 
 const wordDetailMap = new Map();
 for (const w of getAllWords()) {
   wordDetailMap.set(w.word.toUpperCase(), w.details);
 }
 
+function getWordsForLevel(level) {
+  if (level === 'Mixed') return getAllWords();
+  return getWordsByLevel(level);
+}
+
 function Play() {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const puzzleId = searchParams.get('puzzle');
+  const levelParam = searchParams.get('level');
+  const [level, setLevel] = useState(
+    LEVELS.includes(levelParam) ? levelParam : 'Mixed'
+  );
+  const [puzzleKey, setPuzzleKey] = useState(0);
   const timerRef = useRef(0);
   const { markCompleted } = useProgress();
   const [detailClue, setDetailClue] = useState(null);
+
+  const handleLevelChange = useCallback((newLevel) => {
+    setLevel(newLevel);
+    setSearchParams(prev => {
+      const next = new URLSearchParams(prev);
+      next.set('level', newLevel);
+      next.delete('puzzle');
+      return next;
+    });
+    setPuzzleKey(k => k + 1);
+    timerRef.current = 0;
+  }, [setSearchParams]);
 
   const puzzle = useMemo(() => {
     if (puzzleId && prebuiltPuzzles[puzzleId]) {
       return prebuiltPuzzles[puzzleId];
     }
-    return generateCrossword(getAllWords());
-  }, [puzzleId]);
+    return generateCrossword(getWordsForLevel(level));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [puzzleId, level, puzzleKey]);
 
   const {
     userGrid, cellStatus, selectedCell, direction,
-    activeClue, hintsUsed, isComplete, lockedCells,
+    activeClue, hintsUsed, isComplete,
     selectCell, inputLetter, deleteLetter, checkAnswers, revealLetter,
   } = useGame(puzzle);
 
@@ -85,6 +110,10 @@ function Play() {
 
   const handleKeyDown = useCallback((e) => {
     if (detailClue) return;
+    // The Grid's hidden input handles its own typing/backspace. Ignore key
+    // events originating from it so a single keystroke isn't processed twice
+    // (once here on window, once by the input) and written to two cells.
+    if (e.target instanceof HTMLInputElement) return;
     if (e.key === 'Escape') {
       setDetailClue(null);
       return;
@@ -135,6 +164,17 @@ function Play() {
 
   return (
     <div className="play-page">
+      <div className="level-selector">
+        {LEVELS.map(l => (
+          <button
+            key={l}
+            className={`level-button${l === level ? ' level-active' : ''}`}
+            onClick={() => handleLevelChange(l)}
+          >
+            {l}
+          </button>
+        ))}
+      </div>
       <ClueBar
         clue={activeClue}
         direction={direction}
@@ -150,7 +190,6 @@ function Play() {
         selectedCell={selectedCell}
         direction={direction}
         activeClue={activeClue}
-        lockedCells={lockedCells}
         onCellClick={selectCell}
         onInput={inputLetter}
         onDelete={deleteLetter}

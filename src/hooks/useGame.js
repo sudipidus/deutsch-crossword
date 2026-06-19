@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useRef } from 'react';
+import { useState, useCallback, useEffect, useMemo, useRef } from 'react';
 
 const MAX_HINTS = 3;
 const PREFILL_RATIO = 0.5;
@@ -74,13 +74,48 @@ export function useGame(puzzle) {
   const [direction, setDirection] = useState('across');
   const [hintsUsed, setHintsUsed] = useState(0);
 
+  // Reset all interaction state synchronously during render when the puzzle
+  // changes. Done here (not in an effect) so the values used below and returned
+  // to consumers are always sized to the current puzzle — otherwise the render
+  // between the puzzle swap and an after-render reset would hand <Grid> stale
+  // arrays mismatched with the new grid dimensions and crash on indexing.
+  const [activePuzzle, setActivePuzzle] = useState(puzzle);
+  const puzzleChanged = puzzle !== activePuzzle;
+  if (puzzleChanged) {
+    setActivePuzzle(puzzle);
+    setUserGrid(initialUserGrid);
+    setCellStatus(initialCellStatus);
+    setSelectedCell(null);
+    setDirection('across');
+    setHintsUsed(0);
+  }
+
+  // Cancel a pending check-result timer when the puzzle changes or on unmount,
+  // so it can't fire later and write a stale-sized cellStatus into a new puzzle.
+  useEffect(() => {
+    return () => {
+      if (checkTimerRef.current) {
+        clearTimeout(checkTimerRef.current);
+        checkTimerRef.current = null;
+      }
+    };
+  }, [activePuzzle]);
+
+  // Effective values for this render: when the puzzle just changed, the state
+  // setters above are still queued, so fall back to the freshly-derived values.
+  const curUserGrid = puzzleChanged ? initialUserGrid : userGrid;
+  const curCellStatus = puzzleChanged ? initialCellStatus : cellStatus;
+  const curSelectedCell = puzzleChanged ? null : selectedCell;
+  const curDirection = puzzleChanged ? 'across' : direction;
+  const curHintsUsed = puzzleChanged ? 0 : hintsUsed;
+
   const lockedCells = useMemo(() => {
     return initialUserGrid.map(row => row.map(cell => cell !== '' && cell !== null));
   }, [initialUserGrid]);
 
   const activeClue = useMemo(() => {
-    if (!selectedCell) return null;
-    const { row, col } = selectedCell;
+    if (!curSelectedCell) return null;
+    const { row, col } = curSelectedCell;
 
     const findClue = (dir) =>
       clues.find(c => {
@@ -91,19 +126,19 @@ export function useGame(puzzle) {
         return c.col === col && row >= c.row && row < c.row + c.word.length;
       });
 
-    return findClue(direction) || findClue(direction === 'across' ? 'down' : 'across') || null;
-  }, [selectedCell, direction, clues]);
+    return findClue(curDirection) || findClue(curDirection === 'across' ? 'down' : 'across') || null;
+  }, [curSelectedCell, curDirection, clues]);
 
   const isComplete = useMemo(() => {
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
-        if (grid[r][c] !== null && userGrid[r][c] !== grid[r][c]) {
+        if (grid[r][c] !== null && curUserGrid[r][c] !== grid[r][c]) {
           return false;
         }
       }
     }
     return true;
-  }, [userGrid, grid, rows, cols]);
+  }, [curUserGrid, grid, rows, cols]);
 
   const selectCell = useCallback((row, col, forceDirection) => {
     if (grid[row][col] === null) return;
@@ -142,19 +177,10 @@ export function useGame(puzzle) {
 
   const inputLetter = useCallback((letter) => {
     if (!selectedCell) return;
-    let { row, col } = selectedCell;
+    const { row, col } = selectedCell;
 
-    // Skip past locked cells to find the next editable cell
-    while (lockedCells[row][col]) {
-      const nextRow = direction === 'across' ? row : row + 1;
-      const nextCol = direction === 'across' ? col + 1 : col;
-      if (nextRow >= rows || nextCol >= cols || grid[nextRow][nextCol] === null) {
-        return; // Hit boundary or black square, nothing to do
-      }
-      row = nextRow;
-      col = nextCol;
-    }
-
+    // The selected cell always receives the input, overwriting any letter
+    // already there (including prefilled ones).
     const upper = letter.toUpperCase();
     setUserGrid(prev => {
       const next = prev.map(r => [...r]);
@@ -170,12 +196,11 @@ export function useGame(puzzle) {
     } else {
       setSelectedCell({ row, col });
     }
-  }, [selectedCell, direction, grid, rows, cols, lockedCells]);
+  }, [selectedCell, direction, grid, rows, cols]);
 
   const deleteLetter = useCallback(() => {
     if (!selectedCell) return;
     const { row, col } = selectedCell;
-    if (lockedCells[row][col]) return;
 
     setUserGrid(prev => {
       const next = prev.map(r => [...r]);
@@ -197,7 +222,7 @@ export function useGame(puzzle) {
       }
       return prev;
     });
-  }, [selectedCell, direction, grid, lockedCells]);
+  }, [selectedCell, direction, grid]);
 
   const checkAnswers = useCallback(() => {
     if (checkTimerRef.current) {
@@ -209,7 +234,6 @@ export function useGame(puzzle) {
         row.map((cell, c) => {
           if (grid[r][c] === null) return null;
           if (cell === '') return null;
-          if (lockedCells[r][c]) return 'correct';
           return cell === grid[r][c] ? 'correct' : 'wrong';
         })
       )
@@ -219,7 +243,7 @@ export function useGame(puzzle) {
       setCellStatus(grid.map(row => row.map(() => null)));
       checkTimerRef.current = null;
     }, CHECK_DISPLAY_MS);
-  }, [userGrid, grid, lockedCells]);
+  }, [userGrid, grid]);
 
   const revealLetter = useCallback(() => {
     if (!selectedCell) return;
@@ -228,7 +252,6 @@ export function useGame(puzzle) {
     const { row, col } = selectedCell;
     const correctLetter = grid[row][col];
     if (correctLetter === null) return;
-    if (lockedCells[row][col]) return;
 
     setUserGrid(prev => {
       const next = prev.map(r => [...r]);
@@ -236,15 +259,15 @@ export function useGame(puzzle) {
       return next;
     });
     setHintsUsed(prev => prev + 1);
-  }, [selectedCell, hintsUsed, grid, lockedCells]);
+  }, [selectedCell, hintsUsed, grid]);
 
   return {
-    userGrid,
-    cellStatus,
-    selectedCell,
-    direction,
+    userGrid: curUserGrid,
+    cellStatus: curCellStatus,
+    selectedCell: curSelectedCell,
+    direction: curDirection,
     activeClue,
-    hintsUsed,
+    hintsUsed: curHintsUsed,
     isComplete,
     lockedCells,
     selectCell,

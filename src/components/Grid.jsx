@@ -9,7 +9,6 @@ export default function Grid({
   selectedCell,
   direction,
   activeClue,
-  lockedCells,
   onCellClick,
   onInput,
   onDelete,
@@ -68,7 +67,6 @@ export default function Grid({
       const isSelected =
         selectedCell && selectedCell.row === r && selectedCell.col === c;
       const isHighlighted = highlightedCells.has(key);
-      const isLocked = lockedCells && lockedCells[r][c];
       const status = cellStatus[r][c];
       const clueNumber = clueNumberMap[key];
       const letter = userGrid[r][c];
@@ -77,7 +75,6 @@ export default function Grid({
       if (isBlack) classNames.push('black');
       if (isSelected) classNames.push('selected');
       if (isHighlighted && !isSelected) classNames.push('highlighted');
-      if (isLocked) classNames.push('locked');
       if (status === 'correct') classNames.push('correct');
       if (status === 'wrong') classNames.push('wrong');
 
