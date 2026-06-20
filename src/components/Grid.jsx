@@ -37,9 +37,11 @@ export default function Grid({
 
   const handleCellClick = useCallback((r, c) => {
     onCellClick(r, c);
-    // Focus hidden input to open mobile keyboard
+    // Focus hidden input to open mobile keyboard. preventScroll stops the
+    // browser from yanking the page up to the input (pinned at the grid top),
+    // which otherwise scrolls away from the cell being edited.
     if (hiddenInputRef.current) {
-      hiddenInputRef.current.focus();
+      hiddenInputRef.current.focus({ preventScroll: true });
     }
   }, [onCellClick]);
 
