@@ -11,6 +11,9 @@
   position: sticky;
   top: 0;
   z-index: 20;
+  /* Promote to its own layer so the visual-viewport offset is composited
+     (smooth) rather than re-painted (jittery) when the keyboard moves */
+  will-change: transform;
 }
 
 .clue-bar--empty {

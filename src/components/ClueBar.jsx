@@ -10,15 +10,30 @@ function useVisualViewportPin(ref) {
     const vv = window.visualViewport;
     const el = ref.current;
     if (!vv || !el) return;
-    const update = () => {
-      el.style.transform = vv.offsetTop ? `translateY(${vv.offsetTop}px)` : '';
+
+    let raf = 0;
+    let last = -1;
+    // Coalesce the bursts of scroll/resize events the keyboard fires into a
+    // single transform write per animation frame, and skip no-op writes — this
+    // is what removes the visible chasing/jitter. translate3d keeps the bar on
+    // its own GPU layer so the move is composited, not re-painted.
+    const apply = () => {
+      raf = 0;
+      const offset = Math.round(vv.offsetTop);
+      if (offset === last) return;
+      last = offset;
+      el.style.transform = offset ? `translate3d(0, ${offset}px, 0)` : '';
     };
-    update();
-    vv.addEventListener('scroll', update);
-    vv.addEventListener('resize', update);
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(apply);
+    };
+    apply();
+    vv.addEventListener('scroll', schedule);
+    vv.addEventListener('resize', schedule);
     return () => {
-      vv.removeEventListener('scroll', update);
-      vv.removeEventListener('resize', update);
+      if (raf) cancelAnimationFrame(raf);
+      vv.removeEventListener('scroll', schedule);
+      vv.removeEventListener('resize', schedule);
     };
   });
 }
