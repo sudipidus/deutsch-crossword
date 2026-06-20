@@ -14,17 +14,17 @@ Practice German vocabulary by solving crossword puzzles. Each clue gives you an 
 - **Hint system** — reveal a letter or see the article (der/die/das), up to 3 hints per puzzle
 - **Progress tracking** — completed puzzles, words learned, hints used, and average time
 
-## Screenshot
+## Screenshots
 
-```
-  ┌───┬───┬───┬───┬───┐
-  │ A │ P │ F │ E │ L │  1 Across: apple (Der ___ ist rot.)
-  ├───┼───┼───┼───┼───┤
-  │   │   │   │   │   │
-  ├───┼───┼───┼───┼───┤
-  │ H │ A │ U │ S │   │  2 Across: house (Das ___ ist groß.)
-  └───┴───┴───┴───┴───┘
-```
+<p align="center">
+  <img src="docs/screenshots/home.png" alt="Home screen" width="30%" />
+  <img src="docs/screenshots/play.png" alt="Solving a puzzle — active clue highlighted" width="30%" />
+  <img src="docs/screenshots/learn.png" alt="Learn panel — gender, cases, etymology and examples" width="30%" />
+</p>
+
+<p align="center">
+  <em>Home &nbsp;·&nbsp; Solving a puzzle (active clue highlighted) &nbsp;·&nbsp; the Learn panel for any word</em>
+</p>
 
 ## How to Play
 
@@ -35,7 +35,7 @@ Practice German vocabulary by solving crossword puzzles. Each clue gives you an 
 5. **Check your answers** — click Check to see which letters are correct (green) or wrong (red)
 6. **Level badges** — each clue shows its CEFR level: A1 (green), A2 (yellow), B1 (orange)
 
-Pre-filled letters appear in gray and can't be edited — they're there to help you get started.
+Half the letters are pre-filled to get you started — but every cell is editable, so you can type over or clear any letter, including the given ones.
 
 ## Vocabulary Coverage
 
@@ -54,7 +54,7 @@ Each word includes:
 
 - **React 18** with Vite
 - **React Router** for navigation (HashRouter for GitHub Pages compatibility)
-- **Vitest** + React Testing Library (39 tests)
+- **Vitest** + React Testing Library (47 tests)
 - **CSS** with custom properties (dark theme, no framework)
 - **localStorage** for progress persistence
 - **Zero backend** — runs entirely in the browser
